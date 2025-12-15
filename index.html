@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Twoja Wizytówka</title>
+  <style>
+    :root{
+      --bg:#050607;
+      --panel:#0b0d0f;
+      --text:#e8f0ec;
+      --muted:#9fb3aa;
+      --neon:#39ff88;
+      --neon2:#1bdc6c;
+      --border:rgba(57,255,136,.35);
+      --shadow:0 0 18px rgba(57,255,136,.22), 0 0 42px rgba(57,255,136,.10);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 500px at 50% -120px, rgba(57,255,136,.14), transparent 55%),
+        radial-gradient(900px 500px at 10% 10%, rgba(57,255,136,.08), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.45;
+    }
+
+    .wrap{max-width:1100px; margin:0 auto; padding:18px 16px 46px;}
+
+    /* BANER */
+    header.banner{
+      height:160px; /* nie za wysoki */
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:
+        linear-gradient(120deg, rgba(57,255,136,.12), transparent 55%),
+        linear-gradient(0deg, rgba(0,0,0,.65), rgba(0,0,0,.65)),
+        var(--panel);
+      box-shadow: var(--shadow);
+      display:flex;
+      align-items:flex-end;
+      padding:14px 18px;
+      overflow:hidden;
+      position:relative;
+    }
+    header.banner::after{
+      content:"";
+      position:absolute;
+      inset:-60px -40px auto -40px;
+      height:120px;
+      background: linear-gradient(90deg, transparent, rgba(57,255,136,.22), transparent);
+      filter: blur(10px);
+      transform: rotate(-6deg);
+      opacity:.75;
+    }
+    .banner .hint{
+      position:relative;
+      z-index:1;
+      font-size:12px;
+      color:var(--muted);
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+
+    /* MENU */
+    nav{
+      margin-top:14px;
+      border:1px solid var(--border);
+      border-radius:16px;
+      background:rgba(11,13,15,.75);
+      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    nav ul{
+      display:flex;
+      flex-wrap:wrap;
+      gap:0;
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+    nav a{
+      display:block;
+      padding:12px 14px;
+      color:var(--text);
+      text-decoration:none;
+      border-right:1px solid rgba(57,255,136,.14);
+      transition: .2s ease;
+    }
+    nav li:last-child a{border-right:none;}
+    nav a:hover{
+      background:rgba(57,255,136,.10);
+      color:var(--neon);
+      text-shadow: 0 0 10px rgba(57,255,136,.55);
+    }
+
+    /* PROFIL */
+    .profile{
+      margin-top:22px;
+      padding:22px 18px;
+      border:1px solid var(--border);
+      border-radius:20px;
+      background:rgba(11,13,15,.70);
+      box-shadow: var(--shadow);
+      display:grid;
+      gap:14px;
+      justify-items:center;
+      text-align:center;
+    }
+  .avatar{
+    width:140px;
+    height:140px;          /* ważne: bez tego wysokość nie zawsze się ustawi */
+    border-radius:999px;
+    border:2px solid var(--neon);
+    box-shadow: 0 0 16px rgba(57,255,136,.35);
+    overflow:hidden;       /* to “wycina” zdjęcie do kółka */
+    background:#0a0c0e;
+    display:grid;
+    place-items:center;
+  }
+  .avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+  }
+
+    .name{
+      margin:0;
+      font-size:28px;
+      letter-spacing:.02em;
+    }
+    .tagline{margin:0; color:var(--muted); max-width:65ch;}
+
+    .links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+      margin-top:6px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(57,255,136,.35);
+      color:var(--text);
+      text-decoration:none;
+      background:rgba(0,0,0,.35);
+      transition:.2s ease;
+      box-shadow: 0 0 0 rgba(57,255,136,0);
+    }
+    .btn:hover{
+      color:var(--neon);
+      border-color: rgba(57,255,136,.75);
+      box-shadow: 0 0 18px rgba(57,255,136,.20);
+      transform: translateY(-1px);
+    }
+    .dot{
+      width:8px;
+      height:8px;
+      border-radius:99px;
+      background:var(--neon);
+      box-shadow: 0 0 10px rgba(57,255,136,.6);
+    }
+
+    /* SEKCJA: GDZIE MODERUJĘ */
+    section.mods{
+      margin-top:22px;
+      padding:18px;
+      border:1px solid var(--border);
+      border-radius:20px;
+      background:rgba(11,13,15,.62);
+      box-shadow: var(--shadow);
+    }
+    .section-title{
+      margin:0 0 12px;
+      font-size:16px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--neon);
+      text-shadow: 0 0 12px rgba(57,255,136,.35);
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:12px;
+    }
+    .card{
+      border:1px solid rgba(57,255,136,.22);
+      border-radius:18px;
+      background:rgba(0,0,0,.35);
+      padding:14px;
+      min-height:120px;
+      position:relative;
+      overflow:hidden;
+      transition:.2s ease;
+    }
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(420px 160px at 20% 0%, rgba(57,255,136,.12), transparent 55%);
+      opacity:.9;
+      pointer-events:none;
+    }
+    .card:hover{
+      border-color: rgba(57,255,136,.55);
+      transform: translateY(-2px);
+      box-shadow: 0 0 22px rgba(57,255,136,.18);
+    }
+    .card h3{margin:0 0 6px; font-size:16px; position:relative;}
+    .card p{margin:0 0 10px; color:var(--muted); font-size:13px; position:relative;}
+    .card a{
+      position:relative;
+      display:inline-block;
+      color:var(--neon);
+      text-decoration:none;
+      border-bottom:1px dashed rgba(57,255,136,.55);
+      padding-bottom:2px;
+    }
+    .card a:hover{filter: brightness(1.15);}
+    .card-top{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    position:relative;
+    }
+
+    .chan-avatar{
+    width:56px;
+    height:56px;
+    border-radius:999px;
+    border:1px solid rgba(57,255,136,.45);
+    box-shadow: 0 0 14px rgba(57,255,136,.18);
+    overflow:hidden;
+    flex:0 0 auto;
+    background:#0a0c0e;
+    }
+    .chan-avatar img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    }
+
+    .card-meta h3{ margin:0; }
+    .card-meta p{ margin:4px 0 0; }
+
+    .socials{
+    position:relative;
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:10px;
+    }
+
+    .sbtn{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:7px 10px;
+    border-radius:12px;
+    border:1px solid rgba(57,255,136,.22);
+    background:rgba(0,0,0,.28);
+    color:var(--text);
+    text-decoration:none;
+    font-size:12px;
+    transition:.2s ease;
+    }
+    .sbtn:hover{
+    color:var(--neon);
+    border-color: rgba(57,255,136,.65);
+    box-shadow: 0 0 16px rgba(57,255,136,.14);
+    }
+
+.icon-btn{
+  width:34px;
+  height:34px;
+  border-radius:999px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(57,255,136,.35);
+  background:rgba(0,0,0,.35);
+  overflow:hidden;                 /* ważne dla kółka */
+  transition:.2s ease;
+}
+
+/* obrazek ma wypełniać całe kółko */
+.icon-btn img{
+  width:100%;
+  height:100%;
+  object-fit:cover;               /* wypełnia, może przyciąć */
+  object-position:center;
+  display:block;
+}
+
+/* fallback tekstowy (gdy nie ma obrazka) */
+.icon-btn .label{
+  font-size:11px;
+  color:var(--text);
+  letter-spacing:.02em;
+  padding:0 6px;
+  white-space:nowrap;
+}
+.icon-btn img{ object-fit:contain; padding:6px; background:rgba(0,0,0,.35); }
+
+/* hover */
+.icon-btn:hover{
+  border-color: rgba(57,255,136,.75);
+  box-shadow: 0 0 16px rgba(57,255,136,.25);
+  transform: translateY(-1px);
+}
+
+
+    footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
+    }
+
+    /* RESPONSYWNOŚĆ */
+    @media (max-width: 900px){
+      .cards{grid-template-columns: repeat(2, minmax(0, 1fr));}
+      header.banner{height:150px;}
+    }
+    @media (max-width: 560px){
+      .cards{grid-template-columns: 1fr;}
+      nav a{padding:11px 12px;}
+      .name{font-size:24px;}
+      .avatar{width:128px;}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <!-- BANER: możesz podmienić tło na obrazek -->
+    <header class="banner">
+      <div class="hint">Miejsce na baner (np. grafika / logo / hasło)</div>
+    </header>
+
+    <!-- MENU -->
+    <nav aria-label="Menu">
+      <ul>
+        <li><a href="#o-mnie">O mnie</a></li>
+        <li><a href="#moderuje">Gdzie moderuję (aktywni strimerzy)</a></li>
+        <li><a href="#moderuje2">Gdzie moderuję (nieaktywni strimerzy)</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+
+    <!-- PROFIL -->
+    <main>
+      <section class="profile" id="o-mnie">
+        <div class="avatar">
+        <img src="image/LtAsiaa.jpeg" alt="LtAsiaa">
+        </div>
+
+
+        <h1 class="name">LtAsiaa</h1>
+        <p class="tagline">Czasem moderuje na TTV i YT. Moje motto: Co Cię nie zbanuje to Cię wzmocni!</p>
+
+        <div class="links" aria-label="Linki do profili">
+            <a class="icon-btn" href="https://www.twitch.tv/ltasiaa" target="_blank" rel="noreferrer" aria-label="Twitch"><img src="image/ttv.png" alt=""> </a>
+            <a class="icon-btn" href="https://www.youtube.com/@ltasiaa6550" target="_blank" rel="noreferrer" aria-label="YouTube"><img src="image/YT.png" alt="">  </a>
+            <a class="icon-btn" href="https://www.instagram.com/lt.asiaa/" target="_blank" rel="noreferrer"aria-label="Instagram"><img src="image/IG.png" alt="">  </a>
+            <a class="icon-btn" href="https://www.tiktok.com/@ltasiaa" target="_blank" rel="noreferrer"aria-label="Tiktok"><img src="image/TT.png" alt=""></a>
+            <a class="icon-btn" href="https://discord.gg/Cpb4BJKT3s" target="_blank" rel="noreferrer" aria-label="Discord"><img src="image/DC.png" alt=""></a>
+            <a class="icon-btn" href="https://www.linkedin.com/in/joanna-szewczyk-b71726196/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><img src="image/Linked.png" alt=""></a>           
+        </div>
+      </section>
+
+      <!-- GDZIE MODERUJĘ -->
+      <section class="mods" id="oferta" style="margin-top:14px;">
+        <h2 class="section-title">Gdzie moderuję (aktywni strimerzy)</h2>
+        <div class="cards">
+ <article class="card">
+  <div class="card-top">
+    <div class="chan-avatar">
+      <img src="image/Coco.png" alt="Nazwa kanału">
+    </div>
+
+    <div class="card-meta">
+      <h3>Cocogamepl</h3>
+      <p>mod na TTV, YT i DC</p>
+    </div>
+  </div>
+
+<div class="socials">
+  <a class="icon-btn" href="https://www.twitch.tv/cocogamepl" target="_blank" rel="noreferrer" aria-label="Twitch">
+    <img src="image/ttv.png" alt="">
+  </a>
+
+  <a class="icon-btn" href="https://www.youtube.com/@cocogamepl" target="_blank" rel="noreferrer" aria-label="YouTube">
+    <img src="image/image/YT.png" alt="">
+  </a>
+
+  <a class="icon-btn" href="https://www.instagram.com/cocogamepl/" target="_blank" rel="noreferrer" aria-label="Instagram">
+    <img src="image/IG.png" alt="">
+  </a>
+
+  <a class="icon-btn" href="https://discord.gg/mh6vpQxaSc" target="_blank" rel="noreferrer" aria-label="Discord">
+    <img src="image/DC.png" alt="">
+  </a>
+</div>
+
+
+
+</article>
+
+<article class="card">
+  <div class="card-top">
+    <div class="chan-avatar">
+      <img src="image/Pestarz.png" alt="Nazwa kanału">
+    </div>
+
+    <div class="card-meta">
+      <h3>PesTarz_</h3>
+      <p>mod na TTV</p>
+    </div>
+  </div>
+
+<div class="socials">
+  <a class="icon-btn" href="https://www.twitch.tv/pestarz_" target="_blank" rel="noreferrer" aria-label="Twitch">
+    <img src="image/ttv.png" alt="">
+  </a>
+
+  <a class="icon-btn" href="https://www.youtube.com/@pestarz" target="_blank" rel="noreferrer" aria-label="YouTube">
+    <img src="image/YT.png" alt="">
+  </a>
+
+  <a class="icon-btn" href="https://www.instagram.com/pestarz.hop.head/" target="_blank" rel="noreferrer" aria-label="Instagram">
+    <img src="image/IG.png" alt="">
+  </a>
+
+  <a class="icon-btn" href="https://discord.gg/4NDn3sM7xU" target="_blank" rel="noreferrer" aria-label="Discord">
+    <img src="image/DC.png" alt="">
+  </a>
+</div>
+</article>
+
+<article class="card">
+  <div class="card-top">
+    <div class="chan-avatar">
+      <img src="image/Tabo.png" alt="Nazwa kanału">
+    </div>
+
+    <div class="card-meta">
+      <h3>TaboRETRO</h3>
+      <p>mod na TTV i DC</p>
+    </div>
+  </div>
+
+<div class="socials">
+  <a class="icon-btn" href="https://www.twitch.tv/taboretro" target="_blank" rel="noreferrer" aria-label="Twitch">
+    <img src="image/ttv.png" alt="">
+  </a>
+
+  <a class="icon-btn" href="https://www.youtube.com/@TaboRetro" target="_blank" rel="noreferrer" aria-label="YouTube">
+    <img src="image/YT.png" alt="">
+  </a>
+
+  <a class="icon-btn" href="https://www.instagram.com/taboretro" target="_blank" rel="noreferrer" aria-label="Instagram">
+    <img src="image/IG.png" alt="">
+  </a>
+
+  <a class="icon-btn" href="https://discord.gg/EYG3SEPamn" target="_blank" rel="noreferrer" aria-label="Discord">
+    <img src="image/DC.png" alt="">
+  </a>
+      <a class="sbtn" href="TaboLore.html" target="_blank" rel="noreferrer">TaboLore</a>
+</div>
+</article>
+
+<article class="card">
+  <div class="card-top">
+    <div class="chan-avatar">
+      <img src="image/Kokosz.png" alt="Nazwa kanału">
+    </div>
+
+    <div class="card-meta">
+      <h3>KokoszTsunami</h3>
+      <p>mod na TTV</p>
+    </div>
+  </div>
+
+<div class="socials">
+  <a class="icon-btn" href="https://www.twitch.tv/kokosztsunami" target="_blank" rel="noreferrer" aria-label="Twitch">
+    <img src="image/ttv.png" alt="">
+  </a>
+
+  <a class="icon-btn" href="https://www.youtube.com/@KokoszTsunami" target="_blank" rel="noreferrer" aria-label="YouTube">
+    <img src="image/YT.png" alt="">
+  </a>
+
+  <a class="icon-btn" href="https://www.instagram.com/kokosztsunami?igsh=YWs3bWhweHpxdmt2&utm_source=qr" target="_blank" rel="noreferrer" aria-label="Instagram">
+    <img src="image/IG.png" alt="">
+  </a>
+
+  <a class="icon-btn" href="https://discord.gg/vRJMJTgw8d" target="_blank" rel="noreferrer" aria-label="Discord">
+    <img src="image/DC.png" alt="">
+  </a>
+    <a class="icon-btn" href="https://x.com/kokosz_tsunami" target="_blank" rel="noreferrer" aria-label="Discord">
+    <img src="image/X.png" alt="">
+  </a>
+</div>
+</article>
+
+<article class="card">
+  <div class="card-top">
+    <div class="chan-avatar">
+      <img src="image/GSL.png" alt="Nazwa kanału">
+    </div>
+
+    <div class="card-meta">
+      <h3>GrySprzedLat</h3>
+      <p>mod na TTV</p>
+    </div>
+  </div>
+
+<div class="socials">
+  <a class="icon-btn" href="https://www.twitch.tv/grysprzedlat" target="_blank" rel="noreferrer" aria-label="Twitch">
+    <img src="image/ttv.png" alt="">
+  </a>
+
+  <a class="icon-btn" href="https://www.youtube.com/@grysprzedlat" target="_blank" rel="noreferrer" aria-label="YouTube">
+    <img src="image/YT.png" alt="">
+  </a>
+
+  <a class="icon-btn" href="https://www.instagram.com/GrySprzedLat" target="_blank" rel="noreferrer" aria-label="Instagram">
+    <img src="image/IG.png" alt="">
+  </a>
+
+  <a class="icon-btn" href="https://discord.gg/eZq3xsBqrT" target="_blank" rel="noreferrer" aria-label="Discord">
+    <img src="image/DC.png" alt="">
+  </a>
+    <a class="icon-btn" href="https://facebook.com/grysprzedlat" target="_blank" rel="noreferrer" aria-label="Discord">
+    <img src="image/FB.png" alt="">
+  </a>
+</div>
+</article>
+
+        </div>
+      </section>
+
+      <!-- GDZIE MODERUJĘ2 -->
+      <section class="mods" id="moderuje2">
+        <h2 class="section-title">Gdzie moderuję (nieaktywni strimerzy)/moderowałam</h2>
+
+        <div class="cards">
+          <article class="card">
+            <h3>Miejsce 1</h3>
+            <p>Opis / rola / liczby (opcjonalnie).</p>
+            <a href="#" target="_blank" rel="noreferrer">Link</a>
+          </article>
+
+          <article class="card">
+            <h3>Miejsce 2</h3>
+            <p>Opis / rola / liczby (opcjonalnie).</p>
+            <a href="#" target="_blank" rel="noreferrer">Link</a>
+          </article>
+
+          <article class="card">
+            <h3>Miejsce 3</h3>
+            <p>Opis / rola / liczby (opcjonalnie).</p>
+            <a href="#" target="_blank" rel="noreferrer">Link</a>
+          </article>
+                    <article class="card">
+            <h3>Miejsce 3</h3>
+            <p>Opis / rola / liczby (opcjonalnie).</p>
+            <a href="#" target="_blank" rel="noreferrer">Link</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- KONTAKT -->
+      <section class="mods" id="kontakt">
+        <h2 class="section-title">Kontakt</h2>
+        <div class="cards" style="grid-template-columns: repeat(2, minmax(0, 1fr));">
+          <article class="card">
+            <h3>Email</h3>
+            <p>......@domena.pl</p>
+            <a href="mailto:......@domena.pl">Napisz</a>
+          </article>
+          <article class="card">
+            <h3>.....</h3>
+            <p>.......</p>
+            <a href="#">......</a>
+          </article>
+        </div>
+      </section>
+
+      <footer>
+        © <span id="year"></span> LtAsiaa
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // automatyczny rok w stopce
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

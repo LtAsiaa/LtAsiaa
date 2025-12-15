@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lore Wiki – Twoja Strona</title>
+  <style>
+    :root{
+      --bg:#050607;
+      --panel:#0b0d0f;
+      --panel2:#0f1316;
+      --text:#e8f0ec;
+      --muted:#9fb3aa;
+      --neon:#39ff88;
+      --neon2:#1bdc6c;
+      --border:rgba(57,255,136,.28);
+      --shadow:0 0 18px rgba(57,255,136,.20), 0 0 42px rgba(57,255,136,.09);
+      --max:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(1200px 520px at 50% -130px, rgba(57,255,136,.15), transparent 55%),
+        radial-gradient(900px 520px at 15% 12%, rgba(57,255,136,.09), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    /* TOP BAR */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:5;
+      border-bottom:1px solid rgba(57,255,136,.18);
+      background: rgba(5,6,7,.72);
+      backdrop-filter: blur(10px);
+    }
+    .topbar-inner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:10px 16px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      color:var(--text);
+      min-width: 220px;
+    }
+    .logo{
+      width:34px;
+      height:34px;
+      border-radius:12px;
+      border:1px solid rgba(57,255,136,.55);
+      box-shadow: 0 0 14px rgba(57,255,136,.18);
+      background:
+        radial-gradient(circle at 30% 30%, rgba(57,255,136,.22), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.06), transparent 45%),
+        #0a0c0e;
+    }
+    .brand strong{letter-spacing:.02em; font-size:14px}
+    .brand span{display:block; font-size:12px; color:var(--muted)}
+
+    .search{
+      flex:1;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .search input{
+      width:100%;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(57,255,136,.22);
+      background:rgba(11,13,15,.55);
+      color:var(--text);
+      outline:none;
+    }
+    .search input:focus{
+      border-color: rgba(57,255,136,.75);
+      box-shadow: 0 0 16px rgba(57,255,136,.15);
+    }
+
+    .toplinks{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;}
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:9px 10px;
+      border-radius:999px;
+      border:1px solid rgba(57,255,136,.25);
+      background:rgba(0,0,0,.30);
+      color:var(--text);
+      text-decoration:none;
+      transition:.2s ease;
+      font-size:13px;
+      white-space:nowrap;
+    }
+    .pill:hover{color:var(--neon); border-color: rgba(57,255,136,.75); box-shadow: 0 0 18px rgba(57,255,136,.14)}
+    .dot{width:8px; height:8px; border-radius:99px; background:var(--neon); box-shadow:0 0 10px rgba(57,255,136,.55)}
+
+    /* LAYOUT */
+    .wrap{max-width:var(--max); margin:0 auto; padding:16px;}
+    .grid{
+      display:grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap:14px;
+      align-items:start;
+    }
+
+    /* SIDEBAR */
+    aside{
+      position:sticky;
+      top:66px;
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:rgba(11,13,15,.70);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .side-head{
+      padding:14px 14px 10px;
+      border-bottom:1px solid rgba(57,255,136,.16);
+      background: linear-gradient(120deg, rgba(57,255,136,.10), transparent 60%);
+    }
+    .side-title{margin:0; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--neon); text-shadow:0 0 12px rgba(57,255,136,.25)}
+    .side-sub{margin:6px 0 0; font-size:12px; color:var(--muted)}
+
+    .side-section{padding:12px 14px; border-bottom:1px solid rgba(57,255,136,.12)}
+    .side-section:last-child{border-bottom:none}
+    .side-label{font-size:12px; color:var(--muted); margin:0 0 8px; text-transform:uppercase; letter-spacing:.08em}
+
+    .navlist{list-style:none; margin:0; padding:0; display:grid; gap:8px;}
+    .navlist a{
+      display:block;
+      padding:9px 10px;
+      border-radius:12px;
+      border:1px solid rgba(57,255,136,.18);
+      background:rgba(0,0,0,.28);
+      color:var(--text);
+      text-decoration:none;
+      transition:.2s ease;
+      font-size:13px;
+    }
+    .navlist a:hover{color:var(--neon); border-color: rgba(57,255,136,.55); box-shadow: 0 0 16px rgba(57,255,136,.12)}
+
+    /* MAIN ARTICLE */
+    article{
+      border:1px solid var(--border);
+      border-radius:18px;
+      background:rgba(11,13,15,.64);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero{
+      padding:18px 18px 14px;
+      background:
+        linear-gradient(120deg, rgba(57,255,136,.12), transparent 60%),
+        rgba(0,0,0,.25);
+      border-bottom:1px solid rgba(57,255,136,.16);
+    }
+    .hero small{color:var(--muted)}
+    .hero h1{margin:8px 0 6px; font-size:28px; letter-spacing:.02em}
+    .hero .meta{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;}
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(57,255,136,.22);
+      background:rgba(0,0,0,.28);
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .content{
+      padding:16px 18px 18px;
+      display:grid;
+      grid-template-columns: minmax(0, 1fr) 290px;
+      gap:14px;
+      align-items:start;
+    }
+
+    /* TEXT */
+    .prose h2{
+      margin:18px 0 8px;
+      font-size:18px;
+      color:var(--neon);
+      text-shadow: 0 0 12px rgba(57,255,136,.22);
+      letter-spacing:.02em;
+    }
+    .prose p{margin:0 0 10px; color:var(--text)}
+    .prose ul{margin:0 0 10px 18px; color:var(--text)}
+    .prose li{margin:6px 0}
+    .prose code{
+      padding:2px 6px;
+      border-radius:8px;
+      border:1px solid rgba(57,255,136,.22);
+      background:rgba(0,0,0,.30);
+      color:var(--neon);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: .95em;
+    }
+    .prose a{color:var(--neon); text-decoration:none; border-bottom:1px dashed rgba(57,255,136,.55)}
+    .prose a:hover{filter:brightness(1.12)}
+
+    /* TOC */
+    .toc{
+      border:1px solid rgba(57,255,136,.20);
+      background:rgba(0,0,0,.28);
+      border-radius:16px;
+      padding:12px 12px 10px;
+      margin:0 0 12px;
+    }
+    .toc-title{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+    .toc-title strong{font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+    .toc small{color:var(--muted)}
+    .toc ol{margin:10px 0 0 18px; padding:0; display:grid; gap:6px}
+    .toc a{border-bottom:none; color:var(--text)}
+    .toc a:hover{color:var(--neon)}
+
+    /* INFOBOX */
+    .infobox{
+      border:1px solid rgba(57,255,136,.22);
+      background:rgba(0,0,0,.30);
+      border-radius:18px;
+      overflow:hidden;
+      position:sticky;
+      top:66px;
+    }
+    .ibox-head{
+      padding:12px 12px 10px;
+      border-bottom:1px solid rgba(57,255,136,.16);
+      background: linear-gradient(120deg, rgba(57,255,136,.10), transparent 65%);
+    }
+    .ibox-head h3{margin:0; font-size:14px; color:var(--neon); letter-spacing:.06em; text-transform:uppercase}
+    .ibox-media{
+      height:160px;
+      display:grid;
+      place-items:center;
+      border-bottom:1px solid rgba(57,255,136,.14);
+      background:
+        radial-gradient(circle at 30% 30%, rgba(57,255,136,.16), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.06), transparent 45%),
+        #0a0c0e;
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
+      padding:10px;
+    }
+    .ibox-body{padding:10px 12px 12px;}
+    .kv{display:grid; grid-template-columns: 1fr 1fr; gap:8px;}
+    .k{color:var(--muted); font-size:12px}
+    .v{color:var(--text); font-size:12px; text-align:right}
+    .sep{height:1px; background:rgba(57,255,136,.12); margin:10px 0}
+    .ibox-links{display:flex; flex-wrap:wrap; gap:8px;}
+
+    /* FOOT */
+    .footer{
+      padding:14px 18px;
+      border-top:1px solid rgba(57,255,136,.14);
+      color:var(--muted);
+      font-size:12px;
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    /* RESPONSYWNOŚĆ */
+    @media (max-width: 980px){
+      .grid{grid-template-columns: 1fr;}
+      aside{position:relative; top:auto}
+      .content{grid-template-columns: 1fr;}
+      .infobox{position:relative; top:auto}
+      .brand{min-width:auto}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- GÓRNA BELKA (jak wiki) -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <strong>Nazwa Wiki / Lore</strong>
+          <span>Twoja mini-encyklopedia</span>
+        </div>
+      </a>
+
+      <div class="search" aria-label="Szukaj">
+        <input type="search" placeholder="Szukaj w lore… (opcjonalnie)" />
+      </div>
+
+      <div class="toplinks">
+        <a class="pill" href="#"><span class="dot"></span> Strona główna</a>
+        <a class="pill" href="#"><span class="dot"></span> Bohaterowie</a>
+        <a class="pill" href="#"><span class="dot"></span> Lokacje</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="grid">
+
+      <!-- LEWY PANEL (nawigacja) -->
+      <aside>
+        <div class="side-head">
+          <p class="side-title">Nawigacja</p>
+          <p class="side-sub">Skróty do ważnych stron</p>
+        </div>
+
+        <div class="side-section">
+          <p class="side-label">Kategorie</p>
+          <ul class="navlist">
+            <li><a href="#streszczenie">Streszczenie</a></li>
+            <li><a href="#tlo">Tło świata</a></li>
+            <li><a href="#postacie">Postacie</a></li>
+            <li><a href="#wydarzenia">Wydarzenia</a></li>
+            <li><a href="#chronologia">Chronologia</a></li>
+            <li><a href="#ciekawostki">Ciekawostki</a></li>
+            <li><a href="#zrodla">Źródła</a></li>
+          </ul>
+        </div>
+
+        <div class="side-section">
+          <p class="side-label">Szybkie linki</p>
+          <ul class="navlist">
+            <li><a href="#">Mapa świata (link)</a></li>
+            <li><a href="#">Słownik pojęć (link)</a></li>
+            <li><a href="#">FAQ (link)</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- ARTYKUŁ (centrum) -->
+      <article>
+        <div class="hero">
+          <small>Artykuł • aktualizacja: <span id="updated">—</span></small>
+          <h1>Tytuł Lore / Hasło Wiki</h1>
+          <div class="meta">
+            <span class="badge"><span class="dot"></span> gatunek: cyber/noir</span>
+            <span class="badge"><span class="dot"></span> status: kanon</span>
+            <span class="badge"><span class="dot"></span> poziom spoilerów: niski</span>
+          </div>
+        </div>
+
+        <div class="content">
+          <!-- LEWA KOLUMNA: tekst -->
+          <div class="prose">
+
+            <div class="toc" aria-label="Spis treści">
+              <div class="toc-title">
+                <strong>Spis treści</strong>
+                <small>kliknij, aby przejść</small>
+              </div>
+              <ol>
+                <li><a href="#streszczenie">Streszczenie</a></li>
+                <li><a href="#tlo">Tło świata</a></li>
+                <li><a href="#postacie">Postacie</a></li>
+                <li><a href="#wydarzenia">Wydarzenia</a></li>
+                <li><a href="#chronologia">Chronologia</a></li>
+                <li><a href="#ciekawostki">Ciekawostki</a></li>
+                <li><a href="#zrodla">Źródła</a></li>
+              </ol>
+            </div>
+
+            <h2 id="streszczenie">Streszczenie</h2>
+            <p>
+              W tym miejscu wstawiasz krótki opis lore (3–6 zdań). Możesz wpleść wyróżnione pojęcia typu
+              <code>Frakcja</code>, <code>Artefakt</code> albo <code>Wydarzenie</code>.
+            </p>
+
+            <h2 id="tlo">Tło świata</h2>
+            <p>
+              Opisz reguły świata, klimat, technologię/magię, ważne konflikty. Dobrze działa podział na akapity.
+            </p>
+            <ul>
+              <li><b>Motyw przewodni:</b> …</li>
+              <li><b>Zasady:</b> …</li>
+              <li><b>Ograniczenia:</b> …</li>
+            </ul>
+
+            <h2 id="postacie">Postacie</h2>
+            <p>
+              Lista postaci i krótkie opisy. Możesz linkować do innych haseł: <a href="#">Imię Postaci</a>.
+            </p>
+            <ul>
+              <li><b>Postać A</b> — rola, cel, relacje.</li>
+              <li><b>Postać B</b> — rola, cel, sekret.</li>
+              <li><b>Postać C</b> — wątek poboczny, konflikt.</li>
+            </ul>
+
+            <h2 id="wydarzenia">Wydarzenia</h2>
+            <p>
+              Najważniejsze wydarzenia w lore. Jeśli masz podział na „arki” / „sezony”, tu jest idealne miejsce.
+            </p>
+
+            <h2 id="chronologia">Chronologia</h2>
+            <p>
+              Prosta oś czasu. Przykład:
+            </p>
+            <ul>
+              <li><code>Rok 0</code> — „Wielki Reset”</li>
+              <li><code>Rok 3</code> — „Powstanie Syndykatu”</li>
+              <li><code>Rok 7</code> — „Incydent Neonowego Mostu”</li>
+            </ul>
+
+            <h2 id="ciekawostki">Ciekawostki</h2>
+            <p>
+              Smaczki i detale: ukryte znaczenia, inspiracje, easter eggi.
+            </p>
+
+            <h2 id="zrodla">Źródła</h2>
+            <p>
+              Tu wstaw źródła/odcinki/rozmowy/serwery — np. 1) odcinek #12, 2) wpis z dnia …, 3) notatki.
+            </p>
+          </div>
+
+          <!-- PRAWA KOLUMNA: infobox (jak na wiki) -->
+          <aside class="infobox" aria-label="Infobox">
+            <div class="ibox-head">
+              <h3>Infobox</h3>
+            </div>
+            <div class="ibox-media">
+              Miejsce na grafikę / herb / symbol<br>
+              (podmień na <b>&lt;img&gt;</b>)
+            </div>
+            <div class="ibox-body">
+              <div class="kv">
+                <div class="k">Nazwa</div><div class="v">…</div>
+                <div class="k">Typ</div><div class="v">hasło / frakcja</div>
+                <div class="k">Status</div><div class="v">kanon</div>
+                <div class="k">Region</div><div class="v">…</div>
+                <div class="k">Era</div><div class="v">…</div>
+                <div class="k">Powiązania</div><div class="v">…</div>
+              </div>
+              <div class="sep"></div>
+              <div class="ibox-links">
+                <a class="pill" href="#"><span class="dot"></span> Powiązane hasło</a>
+                <a class="pill" href="#"><span class="dot"></span> Mapa</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="footer">
+          <div>© <span id="year"></span> • Lore Wiki</div>
+          <div>Kategorie: <span style="color:var(--neon)">Lore</span> • <span style="color:var(--neon)">Świat</span> • <span style="color:var(--neon)">Postacie</span></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <script>
+    const now = new Date();
+    document.getElementById('year').textContent = now.getFullYear();
+
+    // Przyjazny format daty aktualizacji (PL)
+    const fmt = new Intl.DateTimeFormat('pl-PL', { year:'numeric', month:'long', day:'2-digit' });
+    document.getElementById('updated').textContent = fmt.format(now);
+  </script>
+</body>
+</html>
