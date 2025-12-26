@@ -394,3 +394,19 @@ footer{
 @media (max-width: 560px){
   .stats{ grid-template-columns: 1fr; }
 }
+
+
+.caution-inline{
+  display:inline-block;
+  line-height:1;       /* nie rozpycha linii */
+  vertical-align:baseline;
+}
+
+.caution-inline img{
+  height:0.95em;       /* ~wielkość tekstu */
+  width:auto;
+  display:inline-block;
+  vertical-align:-0.12em; /* lekkie opuszczenie jak litera */
+  image-rendering: pixelated;
+}
+
