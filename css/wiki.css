@@ -452,3 +452,490 @@ article.wiki-article{
   .infobox{ position:relative; top:auto; }
   .brand{ min-width:auto; }
 }
+
+/*---------------------------
+/*---------------------------
+/* =========================
+   STRIKES PAGE
+========================= */
+
+.strike-controls{
+  padding:14px 18px 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.strike-summary{
+  color:var(--muted);
+  font-size:13px;
+  border:1px solid rgba(57,255,136,.18);
+  background:rgba(0,0,0,.28);
+  border-radius:14px;
+  padding:9px 12px;
+}
+
+.strike-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.strike-label{
+  color:var(--muted);
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.strike-select{
+  padding:10px 12px;
+  border-radius:14px;
+  border:1px solid rgba(57,255,136,.22);
+  background:rgba(11,13,15,.55);
+  color:var(--text);
+  outline:none;
+}
+
+.strike-select:focus{
+  border-color: rgba(57,255,136,.75);
+  box-shadow: 0 0 16px rgba(57,255,136,.15);
+}
+
+.strike-list{
+  padding:14px 18px 18px;
+  display:grid;
+  gap:10px;
+}
+
+.strike-row{
+  border:1px solid rgba(57,255,136,.22);
+  border-radius:18px;
+  background:rgba(0,0,0,.28);
+  padding:12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  overflow:hidden;
+}
+
+.strike-row:hover{
+  border-color: rgba(57,255,136,.55);
+  box-shadow: 0 0 18px rgba(57,255,136,.12);
+}
+
+.strike-user{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+}
+
+.strike-avatar{
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  border:1px solid rgba(57,255,136,.35);
+  background:
+    radial-gradient(circle at 30% 30%, rgba(57,255,136,.18), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.06), transparent 45%),
+    #0a0c0e;
+  display:grid;
+  place-items:center;
+  color:var(--neon);
+  font-weight:800;
+  letter-spacing:.02em;
+  flex:0 0 auto;
+}
+
+.strike-meta{ min-width:0; }
+.strike-name{
+  font-weight:700;
+  color:var(--text);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.strike-note{
+  color:var(--muted);
+  font-size:12px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  margin-top:2px;
+}
+
+.strike-right{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:0 0 auto;
+}
+
+.strike-badge{
+  width:44px;
+  height:44px;
+  border-radius:16px;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  border:1px solid rgba(57,255,136,.22);
+  background:rgba(0,0,0,.35);
+  color:var(--text);
+  box-shadow: 0 0 0 rgba(57,255,136,0);
+}
+
+/* Kolory poziomów (bez podawania konkretnych kolorów „na sztywno” poza neonem) */
+.strike-badge[data-level="0"]{
+  border-color: rgba(57,255,136,.18);
+  color: var(--muted);
+}
+.strike-badge[data-level="1"],
+.strike-badge[data-level="2"]{
+  border-color: rgba(57,255,136,.45);
+  color: var(--neon);
+  box-shadow: 0 0 14px rgba(57,255,136,.10);
+}
+.strike-badge[data-level="3"],
+.strike-badge[data-level="4"],
+.strike-badge[data-level="5"]{
+  border-color: rgba(57,255,136,.75);
+  color: var(--neon);
+  box-shadow: 0 0 18px rgba(57,255,136,.18);
+}
+
+@media (max-width: 560px){
+  .strike-row{ align-items:flex-start; }
+  .strike-right{ align-self:center; }
+}
+
+/*-----------------------------
+/*-----------------------------
+/* =========================
+   PLATYNKA (trofea + user list)
+========================= */
+
+.muted-line{ color:var(--muted); margin-top:-4px; }
+
+/* kategoria trofeów */
+.tcat{
+  margin:18px 0 10px;
+  font-size:14px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* lista trofeów jako karty */
+.trophy-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.trophy{
+  border:1px solid rgba(57,255,136,.22);
+  border-radius:16px;
+  background:rgba(0,0,0,.28);
+  overflow:hidden;
+}
+
+.trophy summary{
+  cursor:pointer;
+  list-style:none;
+  padding:12px 12px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border-bottom:1px solid rgba(57,255,136,.12);
+}
+
+.trophy summary::-webkit-details-marker{ display:none; }
+
+.trophy summary:hover{
+  color:var(--neon);
+  background:rgba(57,255,136,.06);
+}
+
+.trophy[open] summary{
+  color:var(--neon);
+}
+
+.t-emo{
+  width:30px;
+  height:30px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(57,255,136,.18);
+  background:rgba(0,0,0,.25);
+  flex:0 0 auto;
+}
+
+.t-name{ font-weight:700; }
+.t-body{
+  padding:12px 12px 13px;
+  color:var(--text);
+  font-size:13px;
+}
+
+/* lista użytkowników */
+.trophy-users{
+  display:grid;
+  gap:10px;
+  margin-top:12px;
+}
+
+.tu-row{
+  border:1px solid rgba(57,255,136,.22);
+  border-radius:18px;
+  background:rgba(0,0,0,.28);
+  padding:12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.tu-row:hover{
+  border-color: rgba(57,255,136,.55);
+  box-shadow: 0 0 18px rgba(57,255,136,.12);
+}
+
+.tu-user{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+}
+
+.tu-avatar{
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  border:1px solid rgba(57,255,136,.35);
+  background:
+    radial-gradient(circle at 30% 30%, rgba(57,255,136,.18), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.06), transparent 45%),
+    #0a0c0e;
+  display:grid;
+  place-items:center;
+  color:var(--neon);
+  font-weight:900;
+  flex:0 0 auto;
+}
+
+.tu-meta{ min-width:0; }
+.tu-name{
+  font-weight:800;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.tu-note{
+  margin-top:2px;
+  color:var(--muted);
+  font-size:12px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* emotki trofeów w wierszu usera */
+.tu-trophies{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  justify-content:flex-end;
+  flex:0 0 auto;
+}
+
+.tu-emo{
+  cursor:pointer;
+  border:1px solid rgba(57,255,136,.22);
+  background:rgba(0,0,0,.30);
+  border-radius:12px;
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  font-size:18px;
+  transition:.2s ease;
+  color:var(--text);
+}
+
+.tu-emo:hover{
+  border-color: rgba(57,255,136,.65);
+  box-shadow: 0 0 18px rgba(57,255,136,.14);
+  transform: translateY(-1px);
+}
+
+/* panel opisu (po kliknięciu) */
+.trophy-pop{
+  margin-top:12px;
+  border:1px solid rgba(57,255,136,.22);
+  border-radius:16px;
+  background:rgba(0,0,0,.28);
+  overflow:hidden;
+}
+
+.trophy-pop summary{
+  cursor:pointer;
+  list-style:none;
+  padding:12px 12px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  border-bottom:1px solid rgba(57,255,136,.12);
+}
+.trophy-pop summary::-webkit-details-marker{ display:none; }
+
+@media (max-width: 980px){
+  .trophy-grid{ grid-template-columns: 1fr; }
+}
+/* Platynka bez infoboxa: jedna kolumna */
+.content.content-one{
+  grid-template-columns: 1fr;
+}
+/*----------------------------------------
+/*----------------------------------------
+/* =========================
+   TABOLOG – DWIE KOLUMNY
+   (nie gryzie się z Platynką)
+========================= */
+
+.content.content-tabolog{
+  display:grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap:14px;
+  align-items:start;
+}
+
+/* prawa kolumna (weterani / hejterzy) */
+.content.content-tabolog > aside{
+  position:sticky;
+  top:66px;
+}
+
+/* RESPONSYWNOŚĆ */
+@media (max-width: 980px){
+  .content.content-tabolog{
+    grid-template-columns: 1fr;
+  }
+
+  .content.content-tabolog > aside{
+    position:relative;
+    top:auto;
+  }
+}
+/* =========================
+   TABOLOG INFOBOX
+========================= */
+
+.tabolog-infobox{
+  border:1px solid rgba(57,255,136,.22);
+  background:rgba(0,0,0,.30);
+  border-radius:18px;
+  overflow:hidden;
+  position:sticky;
+  top:66px;
+}
+
+.tabolog-infobox .ibox-head{
+  padding:12px 12px 10px;
+  border-bottom:1px solid rgba(57,255,136,.16);
+  background: linear-gradient(120deg, rgba(57,255,136,.10), transparent 65%);
+}
+
+.tabolog-infobox .ibox-head h3{
+  margin:0;
+  font-size:14px;
+  color:var(--neon);
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+
+.tabolog-infobox .ibox-body{
+  padding:12px;
+}
+
+/* accordion */
+.ibox-acc{
+  border:1px solid rgba(57,255,136,.18);
+  border-radius:16px;
+  background:rgba(0,0,0,.22);
+  margin-bottom:10px;
+  overflow:hidden;
+}
+
+.ibox-acc:last-child{ margin-bottom:0; }
+
+.ibox-acc summary{
+  cursor:pointer;
+  list-style:none;
+  padding:10px 10px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+}
+.ibox-acc summary::-webkit-details-marker{ display:none; }
+
+.ibox-acc[open] summary{
+  color:var(--neon);
+  background:rgba(57,255,136,.06);
+}
+
+.ibox-acc .count{
+  margin-left:auto;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.ibox-list{
+  margin:8px 0 10px 18px;
+  padding:0;
+  color:var(--text);
+}
+.ibox-list li{ margin:6px 0; }
+
+/* mobile */
+@media (max-width: 980px){
+  .tabolog-infobox{
+    position:relative;
+    top:auto;
+  }
+}
+/* ===== FIX: odstęp listy od ramki infoboxa ===== */
+
+.ibox-body{
+  padding: 12px 16px;   /* więcej miejsca z lewej */
+}
+
+.ibox-list{
+  list-style: none;
+  margin: 8px 0 10px 0;
+  padding-left: 6px;    /* odsunięcie całej listy od ramki */
+}
+
+.ibox-list li{
+  position: relative;
+  padding-left: 18px;   /* miejsce na kropkę */
+  margin: 6px 0;
+}
+
+.ibox-list li::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--neon);
+  box-shadow: 0 0 8px rgba(57,255,136,.6);
+}
