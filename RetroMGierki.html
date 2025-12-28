@@ -138,15 +138,150 @@
           <!-- 2) PLACEHOLDERY na kolejne gry -->
  
 
-          <details class="game">
-            <summary><span class="dot"></span> Memory / Match (w przygotowaniu) <span class="game-mini">—</span></summary>
-            <div class="game-body">
-              <p class="muted-line">Tu będzie Memory. Placeholder.</p>
-            </div>
-          </details>
+<details class="game" id="pong">
+  <summary>
+    <span class="dot"></span>
+    Pong vs CPU
+    <span class="game-mini">
+      Ruch: W/S • Pauza: P • Restart: R • Start: Enter
+    </span>
+  </summary>
 
+  <div class="game-body">
+    <div class="game-grid">
+      <div class="game-panel">
+
+        <div class="game-hud">
+          <div class="hud-item">Gracz: <b id="pgPL">0</b></div>
+          <div class="hud-item">CPU: <b id="pgCPU">0</b></div>
+          <div class="hud-item">Rekord: <b id="pgBest">0</b></div>
+          <div class="hud-item">AI: <b id="pgDiff">Normal</b></div>
+          <div class="hud-item"><span id="pgState" class="hud-pill">READY</span></div>
+        </div>
+
+        <canvas id="pg" width="640" height="400"
+                class="game-canvas game-canvas--land"
+                aria-label="Pong vs CPU"></canvas>
+
+        <div class="game-help">
+          <b>Sterowanie:</b> W/S lub ↑/↓<br>
+          <span class="muted-line">Na telefonie: przeciągaj palcem w górę / dół.</span>
         </div>
       </div>
+
+      <div class="game-side">
+        <div class="game-card">
+          <h3>Zasady</h3>
+          <ul class="ibox-list">
+            <li>Odbijaj piłkę i zdobywaj punkty.</li>
+            <li>Gra do 5 punktów.</li>
+            <li>CPU ma różne poziomy trudności.</li>
+          </ul>
+
+          <h3>Poziom AI</h3>
+          <select id="pgDifficulty" class="strike-select">
+            <option value="easy">Sezonowiec</option>
+            <option value="normal" selected>Taboret</option>
+            <option value="hard">Weteran</option>
+            <option value="insane">Hejter</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</details>
+
+
+<details class="game" id="breakout">
+  <summary>
+    <span class="dot"></span>
+    Breakout (Arkanoid vibes)
+    <span class="game-mini">
+      Ruch: A/D • Pauza: P • Restart: R • Start: Enter
+    </span>
+  </summary>
+
+  <div class="game-body">
+    <div class="game-grid">
+      <div class="game-panel">
+
+        <div class="game-hud">
+          <div class="hud-item">Wynik: <b id="boScore">0</b></div>
+          <div class="hud-item">Rekord: <b id="boBest">0</b></div>
+          <div class="hud-item">Życia: <b id="boLives">3</b></div>
+          <div class="hud-item">Poziom: <b id="boLevel">1</b></div>
+          <div class="hud-item"><span id="boState" class="hud-pill">READY</span></div>
+        </div>
+
+        <canvas id="bo" width="640" height="400"
+                class="game-canvas game-canvas--land"
+                aria-label="Breakout"></canvas>
+
+        <div class="game-help">
+          <b>Sterowanie:</b> A/D lub ←/→<br>
+          <span class="muted-line">Na telefonie: przeciągaj palcem.</span>
+        </div>
+      </div>
+
+      <div class="game-side">
+        <div class="game-card">
+          <h3>Zasady</h3>
+          <ul class="ibox-list">
+            <li>Zbij wszystkie cegły.</li>
+            <li>Nie pozwól piłce spaść.</li>
+            <li>Każdy poziom jest szybszy.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</details>
+
+
+<details class="game" id="ink-ribbon-run">
+  <summary>
+    <span class="dot"></span>
+    Ink Ribbon Run
+    <span class="game-mini">
+      Skok: Space • Pauza: P • Restart: R
+    </span>
+  </summary>
+
+  <div class="game-body">
+    <div class="game-grid">
+      <div class="game-panel">
+
+        <div class="game-hud">
+          <div class="hud-item">Dystans: <b id="irScore">0</b></div>
+          <div class="hud-item">Rekord: <b id="irBest">0</b></div>
+          <div class="hud-item">Prędkość: <b id="irSpeed">1</b></div>
+          <div class="hud-item"><span id="irState" class="hud-pill">READY</span></div>
+        </div>
+
+        <canvas id="ir" width="640" height="400"
+                class="game-canvas game-canvas--land"
+                aria-label="Ink Ribbon Run"></canvas>
+
+        <div class="game-help">
+          <b>Sterowanie:</b> Space / ↑ / Tap<br>
+          <span class="muted-line">Uwaga: dotknięcie Ink Ribbon = GAME OVER</span>
+        </div>
+      </div>
+
+      <div class="game-side">
+        <div class="game-card">
+          <h3>Zasady</h3>
+          <ul class="ibox-list">
+            <li>Skacz nad przeszkodami.</li>
+            <li><b>Nie dotykaj Ink Ribbonów!</b></li>
+            <li>Im dalej, tym szybciej.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</details>
+
 
       <div class="footer">
         <div>© <span id="year"></span> • TaboLore</div>
@@ -155,9 +290,12 @@
     </article>
   </div>
 
- <script src="js/space-impact.js"></script>
- <script src="js/snake.js"></script>
+<script src="js/space-impact.js"></script>
+<script src="js/snake.js"></script>
 
+<script src="js/pong.js"></script>
+<script src="js/breakout.js"></script>
+<script src="js/ink-ribbon-run.js"></script>
 
 </body>
 </html>

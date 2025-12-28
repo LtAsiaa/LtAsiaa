@@ -939,3 +939,14 @@ article.wiki-article{
   background: var(--neon);
   box-shadow: 0 0 8px rgba(57,255,136,.6);
 }
+.log-year > summary {
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+.log-year-body {
+  margin-top: 10px;
+  padding-left: 4px;
+  display: grid;
+  gap: 10px;
+}
