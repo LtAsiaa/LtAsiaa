@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Minigierki • TaboLore</title>
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/wiki.css">
+  <link rel="stylesheet" href="css/minigry.css">
+</head>
+
+<body>
+
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="TaboLore.html">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <strong>TaboLore</strong>
+          <span>Minigierki</span>
+        </div>
+      </a>
+
+      <div class="toplinks">
+        <a class="pill" href="TaboLore.html"><span class="dot"></span> Powrót do Lore</a>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <article class="wiki-article">
+      <div class="hero">
+        <small>Arcade • aktualizacja: <span id="updated">—</span></small>
+        <h1>Minigierki</h1>
+        <div class="meta">
+          <span class="badge"><span class="dot"></span> tryb: retro</span>
+          <span class="badge"><span class="dot"></span> sterowanie: klawiatura + dotyk</span>
+        </div>
+      </div>
+
+      <div class="content content-minigry">
+        <div class="prose">
+
+          <p class="muted-line">
+            Tu będą różne małe gierki. Każda w rozwijanej sekcji. Kiedyś dojdzie baza wyników.
+          </p>
+
+        <details class="game" id="snake">
+        <summary>
+        <span class="dot"></span>
+        Snake (Nokia vibes)
+        <span class="game-mini">Ruch: WASD/Strzałki • Pauza: P • Restart: R</span>
+        </summary>
+
+        <div class="game-body">
+        <div class="game-grid">
+        <div class="game-panel">
+        <div class="game-hud">
+        <div class="hud-item">Wynik: <b id="snScore">0</b></div>
+        <div class="hud-item">Rekord: <b id="snBest">0</b></div>
+        <div class="hud-item">Prędkość: <b id="snSpeed">1</b></div>
+        <div class="hud-item"><span id="snState" class="hud-pill">READY</span></div>
+        </div>
+
+        <canvas id="sn" width="640" height="400" class="game-canvas game-canvas--land" aria-label="Snake"></canvas>
+
+        <div class="game-help">
+        <b>Sterowanie:</b> WASD<br>
+        <span class="muted-line">Na telefonie: swipe w górę/dół/lewo/prawo.</span>
+        </div>
+        </div>
+
+        <div class="game-side">
+        <div class="game-card">
+        <h3>Zasady</h3>
+        <ul class="ibox-list">
+            <li>Zjadaj “jedzenie” żeby rosnąć.</li>
+            <li>Własny ogon = game over.</li>
+            <li>Co kilka punktów rośnie prędkość.</li>
+        </ul>
+        </div>
+        </div>
+        </div>
+        </div>
+        </details>
+
+
+
+
+          <!-- 1) SPACE IMPACT -->
+          <details class="game" id="space-impact" >
+            <summary>
+              <span class="dot"></span>
+              Space Impact (Nokia vibes)
+              <span class="game-mini">Strzał: Space • Ruch: WASD/Strzałki • Pauza: P • Restart: R</span>
+            </summary>
+
+            <div class="game-body">
+              <div class="game-grid">
+                <div class="game-panel">
+                  <div class="game-hud">
+                    <div class="hud-item">Wynik: <b id="siScore">0</b></div>
+                    <div class="hud-item">Życia: <b id="siLives">3</b></div>
+                    <div class="hud-item">Poziom: <b id="siLevel">1</b></div>
+                    <div class="hud-item"><span id="siState" class="hud-pill">READY</span></div>
+                  </div>
+
+                  <canvas id="si" width="720" height="405" class="game-canvas game-canvas--land" aria-label="Space Impact"></canvas>
+
+                  <div class="game-help">
+                    <b>Skróty:</b> P pauza • R restart • Space strzał • Shift szybciej (opcjonalnie).<br>
+                    <span class="muted-line">Na telefonie: przeciągaj palcem po ekranie, tap = strzał.</span>
+                  </div>
+                </div>
+
+                <div class="game-side">
+                  <div class="game-card">
+                    <h3>Jak grać</h3>
+                    <ul class="ibox-list">
+                      <li>Unikaj przeciwników i pocisków.</li>
+                      <li>Zestrzeliwuj cele – rośnie wynik.</li>
+                      <li>Co ~30 sekund tempo rośnie.</li>
+                    </ul>
+                  </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </details>
+
+
+
+
+
+          <!-- 2) PLACEHOLDERY na kolejne gry -->
+ 
+
+<details class="game" id="pong">
+  <summary>
+    <span class="dot"></span>
+    Pong vs CPU
+    <span class="game-mini">
+      Ruch: W/S • Pauza: P • Restart: R • Start: Enter
+    </span>
+  </summary>
+
+  <div class="game-body">
+    <div class="game-grid">
+      <div class="game-panel">
+
+        <div class="game-hud">
+          <div class="hud-item">Gracz: <b id="pgPL">0</b></div>
+          <div class="hud-item">CPU: <b id="pgCPU">0</b></div>
+          <div class="hud-item">Rekord: <b id="pgBest">0</b></div>
+          <div class="hud-item">AI: <b id="pgDiff">Normal</b></div>
+          <div class="hud-item"><span id="pgState" class="hud-pill">READY</span></div>
+        </div>
+
+        <canvas id="pg" width="640" height="400"
+                class="game-canvas game-canvas--land"
+                aria-label="Pong vs CPU"></canvas>
+
+        <div class="game-help">
+          <b>Sterowanie:</b> W/S lub ↑/↓<br>
+          <span class="muted-line">Na telefonie: przeciągaj palcem w górę / dół.</span>
+        </div>
+      </div>
+
+      <div class="game-side">
+        <div class="game-card">
+          <h3>Zasady</h3>
+          <ul class="ibox-list">
+            <li>Odbijaj piłkę i zdobywaj punkty.</li>
+            <li>Gra do 5 punktów.</li>
+            <li>CPU ma różne poziomy trudności.</li>
+          </ul>
+
+          <h3>Poziom AI</h3>
+          <select id="pgDifficulty" class="strike-select">
+            <option value="easy">Sezonowiec</option>
+            <option value="normal" selected>Taboret</option>
+            <option value="hard">Weteran</option>
+            <option value="insane">Hejter</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</details>
+
+
+<details class="game" id="breakout">
+  <summary>
+    <span class="dot"></span>
+    Breakout (Arkanoid vibes)
+    <span class="game-mini">
+      Ruch: A/D • Pauza: P • Restart: R • Start: Enter
+    </span>
+  </summary>
+
+  <div class="game-body">
+    <div class="game-grid">
+      <div class="game-panel">
+
+        <div class="game-hud">
+          <div class="hud-item">Wynik: <b id="boScore">0</b></div>
+          <div class="hud-item">Rekord: <b id="boBest">0</b></div>
+          <div class="hud-item">Życia: <b id="boLives">3</b></div>
+          <div class="hud-item">Poziom: <b id="boLevel">1</b></div>
+          <div class="hud-item"><span id="boState" class="hud-pill">READY</span></div>
+        </div>
+
+        <canvas id="bo" width="640" height="400"
+                class="game-canvas game-canvas--land"
+                aria-label="Breakout"></canvas>
+
+        <div class="game-help">
+          <b>Sterowanie:</b> A/D lub ←/→<br>
+          <span class="muted-line">Na telefonie: przeciągaj palcem.</span>
+        </div>
+      </div>
+
+      <div class="game-side">
+        <div class="game-card">
+          <h3>Zasady</h3>
+          <ul class="ibox-list">
+            <li>Zbij wszystkie cegły.</li>
+            <li>Nie pozwól piłce spaść.</li>
+            <li>Każdy poziom jest szybszy.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</details>
+
+
+      <div class="footer">
+        <div>© <span id="year"></span> • TaboLore</div>
+        <div>Kategorie: <span style="color:var(--neon)">Minigierki</span> • <span style="color:var(--neon)">Retro</span></div>
+      </div>
+    </article>
+  </div>
+
+<script src="js/space-impact.js"></script>
+<script src="js/snake.js"></script>
+
+<script src="js/pong.js"></script>
+<script src="js/breakout.js"></script>
+<script src="js/ink-ribbon-run.js"></script>
+
+</body>
+</html>

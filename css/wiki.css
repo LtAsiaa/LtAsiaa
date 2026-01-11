@@ -1,8 +1,10 @@
 /* WIKI – kompletne style layoutu (oparte o base.css) */
 
-html{scroll-behavior:smooth}
+html{ scroll-behavior:smooth; }
 
-/* TOP BAR */
+/* =========================
+   TOP BAR
+========================= */
 .topbar{
   position:sticky;
   top:0;
@@ -11,6 +13,7 @@ html{scroll-behavior:smooth}
   background: rgba(5,6,7,.72);
   backdrop-filter: blur(10px);
 }
+
 .topbar-inner{
   max-width:1200px;
   margin:0 auto;
@@ -26,8 +29,9 @@ html{scroll-behavior:smooth}
   gap:10px;
   text-decoration:none;
   color:var(--text);
-  min-width: 220px;
+  min-width:220px;
 }
+
 .logo{
   width:34px;
   height:34px;
@@ -39,8 +43,9 @@ html{scroll-behavior:smooth}
     linear-gradient(180deg, rgba(255,255,255,.06), transparent 45%),
     #0a0c0e;
 }
-.brand strong{letter-spacing:.02em; font-size:14px}
-.brand span{display:block; font-size:12px; color:var(--muted)}
+
+.brand strong{ letter-spacing:.02em; font-size:14px; }
+.brand span{ display:block; font-size:12px; color:var(--muted); }
 
 .search{
   flex:1;
@@ -48,6 +53,7 @@ html{scroll-behavior:smooth}
   align-items:center;
   gap:10px;
 }
+
 .search input{
   width:100%;
   padding:10px 12px;
@@ -57,12 +63,19 @@ html{scroll-behavior:smooth}
   color:var(--text);
   outline:none;
 }
+
 .search input:focus{
   border-color: rgba(57,255,136,.75);
   box-shadow: 0 0 16px rgba(57,255,136,.15);
 }
 
-.toplinks{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;}
+.toplinks{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
 .pill{
   display:inline-flex;
   align-items:center;
@@ -77,11 +90,30 @@ html{scroll-behavior:smooth}
   font-size:13px;
   white-space:nowrap;
 }
-.pill:hover{color:var(--neon); border-color: rgba(57,255,136,.75); box-shadow: 0 0 18px rgba(57,255,136,.14)}
-.dot{width:8px; height:8px; border-radius:99px; background:var(--neon); box-shadow:0 0 10px rgba(57,255,136,.55)}
 
-/* LAYOUT */
-.wrap{max-width:1200px; margin:0 auto; padding:16px;}
+.pill:hover{
+  color:var(--neon);
+  border-color: rgba(57,255,136,.75);
+  box-shadow: 0 0 18px rgba(57,255,136,.14);
+}
+
+.dot{
+  width:8px;
+  height:8px;
+  border-radius:99px;
+  background:var(--neon);
+  box-shadow:0 0 10px rgba(57,255,136,.55);
+}
+
+/* =========================
+   LAYOUT
+========================= */
+.wrap{
+  max-width:1200px;
+  margin:0 auto;
+  padding:16px;
+}
+
 .grid{
   display:grid;
   grid-template-columns: 280px minmax(0, 1fr);
@@ -89,7 +121,9 @@ html{scroll-behavior:smooth}
   align-items:start;
 }
 
-/* SIDEBAR */
+/* =========================
+   SIDEBAR
+========================= */
 aside.wiki-side{
   position:sticky;
   top:66px;
@@ -99,19 +133,50 @@ aside.wiki-side{
   box-shadow: var(--shadow);
   overflow:hidden;
 }
+
 .side-head{
   padding:14px 14px 10px;
   border-bottom:1px solid rgba(57,255,136,.16);
   background: linear-gradient(120deg, rgba(57,255,136,.10), transparent 60%);
 }
-.side-title{margin:0; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--neon); text-shadow:0 0 12px rgba(57,255,136,.25)}
-.side-sub{margin:6px 0 0; font-size:12px; color:var(--muted)}
 
-.side-section{padding:12px 14px; border-bottom:1px solid rgba(57,255,136,.12)}
-.side-section:last-child{border-bottom:none}
-.side-label{font-size:12px; color:var(--muted); margin:0 0 8px; text-transform:uppercase; letter-spacing:.08em}
+.side-title{
+  margin:0;
+  font-size:13px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--neon);
+  text-shadow:0 0 12px rgba(57,255,136,.25);
+}
 
-.navlist{list-style:none; margin:0; padding:0; display:grid; gap:8px;}
+.side-sub{
+  margin:6px 0 0;
+  font-size:12px;
+  color:var(--muted);
+}
+
+.side-section{
+  padding:12px 14px;
+  border-bottom:1px solid rgba(57,255,136,.12);
+}
+.side-section:last-child{ border-bottom:none; }
+
+.side-label{
+  font-size:12px;
+  color:var(--muted);
+  margin:0 0 8px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.navlist{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:8px;
+}
+
 .navlist a{
   display:block;
   padding:9px 10px;
@@ -123,9 +188,16 @@ aside.wiki-side{
   transition:.2s ease;
   font-size:13px;
 }
-.navlist a:hover{color:var(--neon); border-color: rgba(57,255,136,.55); box-shadow: 0 0 16px rgba(57,255,136,.12)}
 
-/* MAIN ARTICLE */
+.navlist a:hover{
+  color:var(--neon);
+  border-color: rgba(57,255,136,.55);
+  box-shadow: 0 0 16px rgba(57,255,136,.12);
+}
+
+/* =========================
+   MAIN ARTICLE
+========================= */
 article.wiki-article{
   border:1px solid rgba(57,255,136,.28);
   border-radius:18px;
@@ -141,9 +213,16 @@ article.wiki-article{
     rgba(0,0,0,.25);
   border-bottom:1px solid rgba(57,255,136,.16);
 }
-.hero small{color:var(--muted)}
-.hero h1{margin:8px 0 6px; font-size:28px; letter-spacing:.02em}
-.hero .meta{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;}
+
+.hero small{ color:var(--muted); }
+.hero h1{ margin:8px 0 6px; font-size:28px; letter-spacing:.02em; }
+
+.hero .meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:10px;
+}
 
 .badge{
   display:inline-flex;
@@ -157,7 +236,9 @@ article.wiki-article{
   font-size:12px;
 }
 
-/* CONTENT: tekst + infobox */
+/* =========================
+   CONTENT: prose + infobox
+========================= */
 .content{
   padding:16px 18px 18px;
   display:grid;
@@ -174,9 +255,11 @@ article.wiki-article{
   text-shadow: 0 0 12px rgba(57,255,136,.22);
   letter-spacing:.02em;
 }
-.prose p{margin:0 0 10px; color:var(--text)}
-.prose ul{margin:0 0 10px 18px; color:var(--text)}
-.prose li{margin:6px 0}
+
+.prose p{ margin:0 0 10px; color:var(--text); }
+.prose ul{ margin:0 0 10px 18px; color:var(--text); }
+.prose li{ margin:6px 0; }
+
 .prose code{
   padding:2px 6px;
   border-radius:8px;
@@ -186,8 +269,13 @@ article.wiki-article{
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size:.95em;
 }
-.prose a{color:var(--neon); text-decoration:none; border-bottom:1px dashed rgba(57,255,136,.55)}
-.prose a:hover{filter:brightness(1.12)}
+
+.prose a{
+  color:var(--neon);
+  text-decoration:none;
+  border-bottom:1px dashed rgba(57,255,136,.55);
+}
+.prose a:hover{ filter:brightness(1.12); }
 
 /* TOC */
 .toc{
@@ -197,14 +285,33 @@ article.wiki-article{
   padding:12px 12px 10px;
   margin:0 0 12px;
 }
-.toc-title{display:flex; align-items:center; justify-content:space-between; gap:10px;}
-.toc-title strong{font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
-.toc small{color:var(--muted)}
-.toc ol{margin:10px 0 0 18px; padding:0; display:grid; gap:6px}
-.toc a{border-bottom:none; color:var(--text)}
-.toc a:hover{color:var(--neon)}
 
-/* INFOBOX */
+.toc-title{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.toc-title strong{
+  font-size:13px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.toc small{ color:var(--muted); }
+.toc ol{ margin:10px 0 0 18px; padding:0; display:grid; gap:6px; }
+
+.toc a{
+  border-bottom:none;
+  color:var(--text);
+}
+.toc a:hover{ color:var(--neon); }
+
+/* =========================
+   INFOBOX (obrazek kwadrat + linki w dół)
+========================= */
 .infobox{
   border:1px solid rgba(57,255,136,.22);
   background:rgba(0,0,0,.30);
@@ -213,34 +320,54 @@ article.wiki-article{
   position:sticky;
   top:66px;
 }
+
 .ibox-head{
   padding:12px 12px 10px;
   border-bottom:1px solid rgba(57,255,136,.16);
   background: linear-gradient(120deg, rgba(57,255,136,.10), transparent 65%);
 }
-.ibox-head h3{margin:0; font-size:14px; color:var(--neon); letter-spacing:.06em; text-transform:uppercase}
-.ibox-media{
-  height:160px;
-  display:grid;
-  place-items:center;
-  border-bottom:1px solid rgba(57,255,136,.14);
-  background:
-    radial-gradient(circle at 30% 30%, rgba(57,255,136,.16), transparent 55%),
-    linear-gradient(180deg, rgba(255,255,255,.06), transparent 45%),
-    #0a0c0e;
-  color:var(--muted);
-  font-size:12px;
-  text-align:center;
-  padding:10px;
-}
-.ibox-body{padding:10px 12px 12px;}
-.kv{display:grid; grid-template-columns: 1fr 1fr; gap:8px;}
-.k{color:var(--muted); font-size:12px}
-.v{color:var(--text); font-size:12px; text-align:right}
-.sep{height:1px; background:rgba(57,255,136,.12); margin:10px 0}
-.ibox-links{display:flex; flex-wrap:wrap; gap:8px;}
 
-/* FOOT */
+.ibox-head h3{
+  margin:0;
+  font-size:14px;
+  color:var(--neon);
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+
+/* kwadrat na obrazek */
+.ibox-media{
+  width:100%;
+  aspect-ratio: 1 / 1;
+  background:#0a0c0e;
+  border-bottom:1px solid rgba(57,255,136,.14);
+  overflow:hidden;
+}
+
+.ibox-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;      /* wypełnia kwadrat */
+  object-position:center;
+  display:block;
+}
+
+.ibox-body{ padding:12px; }
+
+.ibox-links{
+  display:flex;
+  flex-direction:column; /* linki jeden pod drugim */
+  gap:10px;
+}
+
+.ibox-links .pill{
+  width:100%;
+  justify-content:flex-start;
+}
+
+/* =========================
+   FOOTER
+========================= */
 .footer{
   padding:14px 18px;
   border-top:1px solid rgba(57,255,136,.14);
@@ -252,11 +379,574 @@ article.wiki-article{
   flex-wrap:wrap;
 }
 
+/* =========================
+   TROFEA / SUBHEAD
+========================= */
+.subhead{
+  margin:16px 0 8px;
+  font-size:14px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* =========================
+   TABOLOG (details/summary)
+========================= */
+.log{
+  border:1px solid rgba(57,255,136,.22);
+  border-radius:16px;
+  background:rgba(0,0,0,.28);
+  margin:10px 0;
+  overflow:hidden;
+}
+
+.log summary{
+  cursor:pointer;
+  list-style:none;
+  padding:12px 12px;
+  border-bottom:1px solid rgba(57,255,136,.14);
+  display:flex;
+  gap:10px;
+  align-items:center;
+  transition:.2s ease;
+}
+
+.log summary::-webkit-details-marker{ display:none; }
+
+.log summary:hover{
+  color:var(--neon);
+  background:rgba(57,255,136,.06);
+}
+
+.log[open] summary{
+  color:var(--neon);
+  box-shadow: inset 0 -1px 0 rgba(57,255,136,.12);
+}
+
+.log-date{
+  display:inline-flex;
+  align-items:center;
+  padding:4px 8px;
+  border-radius:999px;
+  border:1px solid rgba(57,255,136,.25);
+  background:rgba(0,0,0,.35);
+  color:var(--text);
+  font-size:12px;
+}
+
+.log-body{
+  padding:12px 12px 14px;
+  color:var(--text);
+}
+.log-body ul{ margin:0 0 10px 18px; }
+.log-body p{ margin:8px 0 0; color:var(--muted); }
+
+/* =========================
+   RESPONSYWNOŚĆ
+========================= */
+@media (max-width: 980px){
+  .grid{ grid-template-columns: 1fr; }
+  aside.wiki-side{ position:relative; top:auto; }
+  .content{ grid-template-columns: 1fr; }
+  .infobox{ position:relative; top:auto; }
+  .brand{ min-width:auto; }
+}
+
+/*---------------------------
+/*---------------------------
+/* =========================
+   STRIKES PAGE
+========================= */
+
+.strike-controls{
+  padding:14px 18px 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.strike-summary{
+  color:var(--muted);
+  font-size:13px;
+  border:1px solid rgba(57,255,136,.18);
+  background:rgba(0,0,0,.28);
+  border-radius:14px;
+  padding:9px 12px;
+}
+
+.strike-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.strike-label{
+  color:var(--muted);
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+
+.strike-select{
+  padding:10px 12px;
+  border-radius:14px;
+  border:1px solid rgba(57,255,136,.22);
+  background:rgba(11,13,15,.55);
+  color:var(--text);
+  outline:none;
+}
+
+.strike-select:focus{
+  border-color: rgba(57,255,136,.75);
+  box-shadow: 0 0 16px rgba(57,255,136,.15);
+}
+
+.strike-list{
+  padding:14px 18px 18px;
+  display:grid;
+  gap:10px;
+}
+
+.strike-row{
+  border:1px solid rgba(57,255,136,.22);
+  border-radius:18px;
+  background:rgba(0,0,0,.28);
+  padding:12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  overflow:hidden;
+}
+
+.strike-row:hover{
+  border-color: rgba(57,255,136,.55);
+  box-shadow: 0 0 18px rgba(57,255,136,.12);
+}
+
+.strike-user{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+}
+
+.strike-avatar{
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  border:1px solid rgba(57,255,136,.35);
+  background:
+    radial-gradient(circle at 30% 30%, rgba(57,255,136,.18), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.06), transparent 45%),
+    #0a0c0e;
+  display:grid;
+  place-items:center;
+  color:var(--neon);
+  font-weight:800;
+  letter-spacing:.02em;
+  flex:0 0 auto;
+}
+
+.strike-meta{ min-width:0; }
+.strike-name{
+  font-weight:700;
+  color:var(--text);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.strike-note{
+  color:var(--muted);
+  font-size:12px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  margin-top:2px;
+}
+
+.strike-right{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:0 0 auto;
+}
+
+.strike-badge{
+  width:44px;
+  height:44px;
+  border-radius:16px;
+  display:grid;
+  place-items:center;
+  font-weight:900;
+  border:1px solid rgba(57,255,136,.22);
+  background:rgba(0,0,0,.35);
+  color:var(--text);
+  box-shadow: 0 0 0 rgba(57,255,136,0);
+}
+
+/* Kolory poziomów (bez podawania konkretnych kolorów „na sztywno” poza neonem) */
+.strike-badge[data-level="0"]{
+  border-color: rgba(57,255,136,.18);
+  color: var(--muted);
+}
+.strike-badge[data-level="1"],
+.strike-badge[data-level="2"]{
+  border-color: rgba(57,255,136,.45);
+  color: var(--neon);
+  box-shadow: 0 0 14px rgba(57,255,136,.10);
+}
+.strike-badge[data-level="3"],
+.strike-badge[data-level="4"],
+.strike-badge[data-level="5"]{
+  border-color: rgba(57,255,136,.75);
+  color: var(--neon);
+  box-shadow: 0 0 18px rgba(57,255,136,.18);
+}
+
+@media (max-width: 560px){
+  .strike-row{ align-items:flex-start; }
+  .strike-right{ align-self:center; }
+}
+
+/*-----------------------------
+/*-----------------------------
+/* =========================
+   PLATYNKA (trofea + user list)
+========================= */
+
+.muted-line{ color:var(--muted); margin-top:-4px; }
+
+/* kategoria trofeów */
+.tcat{
+  margin:18px 0 10px;
+  font-size:14px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* lista trofeów jako karty */
+.trophy-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.trophy{
+  border:1px solid rgba(57,255,136,.22);
+  border-radius:16px;
+  background:rgba(0,0,0,.28);
+  overflow:hidden;
+}
+
+.trophy summary{
+  cursor:pointer;
+  list-style:none;
+  padding:12px 12px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  border-bottom:1px solid rgba(57,255,136,.12);
+}
+
+.trophy summary::-webkit-details-marker{ display:none; }
+
+.trophy summary:hover{
+  color:var(--neon);
+  background:rgba(57,255,136,.06);
+}
+
+.trophy[open] summary{
+  color:var(--neon);
+}
+
+.t-emo{
+  width:30px;
+  height:30px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(57,255,136,.18);
+  background:rgba(0,0,0,.25);
+  flex:0 0 auto;
+}
+
+.t-name{ font-weight:700; }
+.t-body{
+  padding:12px 12px 13px;
+  color:var(--text);
+  font-size:13px;
+}
+
+/* lista użytkowników */
+.trophy-users{
+  display:grid;
+  gap:10px;
+  margin-top:12px;
+}
+
+.tu-row{
+  border:1px solid rgba(57,255,136,.22);
+  border-radius:18px;
+  background:rgba(0,0,0,.28);
+  padding:12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.tu-row:hover{
+  border-color: rgba(57,255,136,.55);
+  box-shadow: 0 0 18px rgba(57,255,136,.12);
+}
+
+.tu-user{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:0;
+}
+
+.tu-avatar{
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  border:1px solid rgba(57,255,136,.35);
+  background:
+    radial-gradient(circle at 30% 30%, rgba(57,255,136,.18), transparent 55%),
+    linear-gradient(180deg, rgba(255,255,255,.06), transparent 45%),
+    #0a0c0e;
+  display:grid;
+  place-items:center;
+  color:var(--neon);
+  font-weight:900;
+  flex:0 0 auto;
+}
+
+.tu-meta{ min-width:0; }
+.tu-name{
+  font-weight:800;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.tu-note{
+  margin-top:2px;
+  color:var(--muted);
+  font-size:12px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* emotki trofeów w wierszu usera */
+.tu-trophies{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  justify-content:flex-end;
+  flex:0 0 auto;
+}
+
+.tu-emo{
+  cursor:pointer;
+  border:1px solid rgba(57,255,136,.22);
+  background:rgba(0,0,0,.30);
+  border-radius:12px;
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  font-size:18px;
+  transition:.2s ease;
+  color:var(--text);
+}
+
+.tu-emo:hover{
+  border-color: rgba(57,255,136,.65);
+  box-shadow: 0 0 18px rgba(57,255,136,.14);
+  transform: translateY(-1px);
+}
+
+/* panel opisu (po kliknięciu) */
+.trophy-pop{
+  margin-top:12px;
+  border:1px solid rgba(57,255,136,.22);
+  border-radius:16px;
+  background:rgba(0,0,0,.28);
+  overflow:hidden;
+}
+
+.trophy-pop summary{
+  cursor:pointer;
+  list-style:none;
+  padding:12px 12px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+  border-bottom:1px solid rgba(57,255,136,.12);
+}
+.trophy-pop summary::-webkit-details-marker{ display:none; }
+
+@media (max-width: 980px){
+  .trophy-grid{ grid-template-columns: 1fr; }
+}
+/* Platynka bez infoboxa: jedna kolumna */
+.content.content-one{
+  grid-template-columns: 1fr;
+}
+/*----------------------------------------
+/*----------------------------------------
+/* =========================
+   TABOLOG – DWIE KOLUMNY
+   (nie gryzie się z Platynką)
+========================= */
+
+.content.content-tabolog{
+  display:grid;
+  grid-template-columns: minmax(0, 1fr) 280px;
+  gap:14px;
+  align-items:start;
+}
+
+/* prawa kolumna (weterani / hejterzy) */
+.content.content-tabolog > aside{
+  position:sticky;
+  top:66px;
+}
+
 /* RESPONSYWNOŚĆ */
 @media (max-width: 980px){
-  .grid{grid-template-columns: 1fr;}
-  aside.wiki-side{position:relative; top:auto}
-  .content{grid-template-columns: 1fr;}
-  .infobox{position:relative; top:auto}
-  .brand{min-width:auto}
+  .content.content-tabolog{
+    grid-template-columns: 1fr;
+  }
+
+  .content.content-tabolog > aside{
+    position:relative;
+    top:auto;
+  }
+}
+/* =========================
+   TABOLOG INFOBOX
+========================= */
+
+.tabolog-infobox{
+  border:1px solid rgba(57,255,136,.22);
+  background:rgba(0,0,0,.30);
+  border-radius:18px;
+  overflow:hidden;
+  position:sticky;
+  top:66px;
+}
+
+.tabolog-infobox .ibox-head{
+  padding:12px 12px 10px;
+  border-bottom:1px solid rgba(57,255,136,.16);
+  background: linear-gradient(120deg, rgba(57,255,136,.10), transparent 65%);
+}
+
+.tabolog-infobox .ibox-head h3{
+  margin:0;
+  font-size:14px;
+  color:var(--neon);
+  letter-spacing:.06em;
+  text-transform:uppercase;
+}
+
+.tabolog-infobox .ibox-body{
+  padding:12px;
+}
+
+/* accordion */
+.ibox-acc{
+  border:1px solid rgba(57,255,136,.18);
+  border-radius:16px;
+  background:rgba(0,0,0,.22);
+  margin-bottom:10px;
+  overflow:hidden;
+}
+
+.ibox-acc:last-child{ margin-bottom:0; }
+
+.ibox-acc summary{
+  cursor:pointer;
+  list-style:none;
+  padding:10px 10px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:13px;
+}
+.ibox-acc summary::-webkit-details-marker{ display:none; }
+
+.ibox-acc[open] summary{
+  color:var(--neon);
+  background:rgba(57,255,136,.06);
+}
+
+.ibox-acc .count{
+  margin-left:auto;
+  color:var(--muted);
+  font-size:12px;
+}
+
+.ibox-list{
+  margin:8px 0 10px 18px;
+  padding:0;
+  color:var(--text);
+}
+.ibox-list li{ margin:6px 0; }
+
+/* mobile */
+@media (max-width: 980px){
+  .tabolog-infobox{
+    position:relative;
+    top:auto;
+  }
+}
+/* ===== FIX: odstęp listy od ramki infoboxa ===== */
+
+.ibox-body{
+  padding: 12px 16px;   /* więcej miejsca z lewej */
+}
+
+.ibox-list{
+  list-style: none;
+  margin: 8px 0 10px 0;
+  padding-left: 6px;    /* odsunięcie całej listy od ramki */
+}
+
+.ibox-list li{
+  position: relative;
+  padding-left: 18px;   /* miejsce na kropkę */
+  margin: 6px 0;
+}
+
+.ibox-list li::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--neon);
+  box-shadow: 0 0 8px rgba(57,255,136,.6);
+}
+.log-year > summary {
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+.log-year-body {
+  margin-top: 10px;
+  padding-left: 4px;
+  display: grid;
+  gap: 10px;
 }

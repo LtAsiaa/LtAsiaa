@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Licznik Strików • TaboLore</title>
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/wiki.css">
+  <!-- opcjonalnie, jeśli zrobisz osobny plik: -->
+  <!-- <link rel="stylesheet" href="css/strike.css"> -->
+</head>
+
+<body>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="TaboLore.html">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <strong>TaboLore</strong>
+          <span>Licznik Strików</span>
+        </div>
+      </a>
+
+      <div class="search" aria-label="Szukaj">
+        <input id="q" type="search" placeholder="Szukaj użytkownika…" autocomplete="off">
+      </div>
+
+      <div class="toplinks">
+        <a class="pill" href="TaboLore.html"><span class="dot"></span> Powrót do Lore</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <article class="wiki-article">
+      <div class="hero">
+        <small>TaboLore • aktualizacja: <span id="updated">—</span></small>
+        <h1>Licznik Strików</h1>
+
+        <div class="meta">
+          <span class="badge"><span class="dot"></span> zasada: moderacja decyduje</span>
+          <span class="badge"><span class="dot"></span> status: aktywne</span>
+        </div>
+      </div>
+
+      <div class="strike-controls">
+        <div class="strike-summary" id="summary">—</div>
+
+        <div class="strike-actions">
+          <label class="strike-label" for="sort">Sortuj</label>
+          <select id="sort" class="strike-select">
+            <option value="strikes-desc">Striki: malejąco</option>
+            <option value="strikes-asc">Striki: rosnąco</option>
+            <option value="name-asc">Nick: A → Z</option>
+            <option value="name-desc">Nick: Z → A</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="strike-list" id="list" aria-label="Lista użytkowników i strików">
+
+                <div class="strike-row" data-name="Pestarz" data-strikes="20">
+          <div class="strike-user">
+            <div class="strike-avatar" aria-hidden="true">P</div>
+            <div class="strike-meta">
+              <div class="strike-name">Pestarz</div>
+              <div class="strike-note">Biega z ink ribbonem</div>
+            </div>
+          </div>
+          <div class="strike-right">
+            <span class="strike-badge" data-level="20">20</span>
+          </div>
+        </div>
+
+        <div class="strike-row" data-name="LtAsiaa" data-strikes="15">
+          <div class="strike-user">
+            <div class="strike-avatar" aria-hidden="true">L</div>
+            <div class="strike-meta">
+              <div class="strike-name">LtAsiaa</div>
+              <div class="strike-note">Najlepsza moderatorka</div>
+            </div>
+          </div>
+          <div class="strike-right">
+            <span class="strike-badge" data-level="15">15</span>
+          </div>
+        </div>
+        <!-- Przykładowe wiersze — edytuj ręcznie -->
+        <div class="strike-row" data-name="Greed" data-strikes="15">
+          <div class="strike-user">
+            <div class="strike-avatar" aria-hidden="true">G</div>
+            <div class="strike-meta">
+              <div class="strike-name">Greed</div>
+              <div class="strike-note"> …</div>
+            </div>
+          </div>
+          <div class="strike-right">
+            <span class="strike-badge" data-level="15">15</span>
+          </div>
+        </div>
+
+        <div class="strike-row" data-name="Madbranko" data-strikes="10">
+          <div class="strike-user">
+            <div class="strike-avatar" aria-hidden="true">M</div>
+            <div class="strike-meta">
+              <div class="strike-name">Madbranko</div>
+              <div class="strike-note"> …</div>
+            </div>
+          </div>
+          <div class="strike-right">
+            <span class="strike-badge" data-level="10">10</span>
+          </div>
+        </div>
+
+
+        <div class="strike-row" data-name="Kolorowa Ćma" data-strikes="2">
+          <div class="strike-user">
+            <div class="strike-avatar" aria-hidden="true">K</div>
+            <div class="strike-meta">
+              <div class="strike-name">Kolorowa Ćma</div>
+              <div class="strike-note"> …</div>
+            </div>
+          </div>
+          <div class="strike-right">
+            <span class="strike-badge" data-level="2">2</span>
+          </div>
+        </div>
+
+
+        <div class="strike-row" data-name="RetroGibby" data-strikes="2">
+          <div class="strike-user">
+            <div class="strike-avatar" aria-hidden="true">R</div>
+            <div class="strike-meta">
+              <div class="strike-name">RetroGibby</div>
+              <div class="strike-note"> …</div>
+            </div>
+          </div>
+          <div class="strike-right">
+            <span class="strike-badge" data-level="2">2</span>
+          </div>
+        </div>
+
+
+        <div class="strike-row" data-name="Orzechowy Rozpruwacz" data-strikes="2">
+          <div class="strike-user">
+            <div class="strike-avatar" aria-hidden="true">O</div>
+            <div class="strike-meta">
+              <div class="strike-name">Orzechowy Rozpruwacz</div>
+              <div class="strike-note"> …</div>
+            </div>
+          </div>
+          <div class="strike-right">
+            <span class="strike-badge" data-level="2">2</span>
+          </div>
+        </div>
+
+
+        <div class="strike-row" data-name="Krisuroku" data-strikes="2">
+          <div class="strike-user">
+            <div class="strike-avatar" aria-hidden="true">K</div>
+            <div class="strike-meta">
+              <div class="strike-name">Krisuroku</div>
+              <div class="strike-note"> …</div>
+            </div>
+          </div>
+          <div class="strike-right">
+            <span class="strike-badge" data-level="2">2</span>
+          </div>
+        </div>
+
+        <div class="strike-row" data-name="Meefjuuu" data-strikes="15">
+          <div class="strike-user">
+            <div class="strike-avatar" aria-hidden="true">M</div>
+            <div class="strike-meta">
+              <div class="strike-name">Meefjuuu</div>
+              <div class="strike-note"> …</div>
+            </div>
+          </div>
+          <div class="strike-right">
+            <span class="strike-badge" data-level="15">15</span>
+          </div>
+        </div>
+
+
+        <div class="strike-row" data-name="Apollo" data-strikes="2">
+          <div class="strike-user">
+            <div class="strike-avatar" aria-hidden="true">A</div>
+            <div class="strike-meta">
+              <div class="strike-name">Apollo</div>
+              <div class="strike-note"> …</div>
+            </div>
+          </div>
+          <div class="strike-right">
+            <span class="strike-badge" data-level="2">2</span>
+          </div>
+        </div>
+
+
+        <div class="strike-row" data-name="Alpsx" data-strikes="2">
+          <div class="strike-user">
+            <div class="strike-avatar" aria-hidden="true">A</div>
+            <div class="strike-meta">
+              <div class="strike-name">Alpsx</div>
+              <div class="strike-note"> …</div>
+            </div>
+          </div>
+          <div class="strike-right">
+            <span class="strike-badge" data-level="2">2</span>
+          </div>
+        </div>
+
+
+        <div class="strike-row" data-name="Chaster" data-strikes="2">
+          <div class="strike-user">
+            <div class="strike-avatar" aria-hidden="true">C</div>
+            <div class="strike-meta">
+              <div class="strike-name">Chaster</div>
+              <div class="strike-note"> …</div>
+            </div>
+          </div>
+          <div class="strike-right">
+            <span class="strike-badge" data-level="2">2</span>
+          </div>
+        </div>
+
+
+        <div class="strike-row" data-name="Drakson" data-strikes="2">
+          <div class="strike-user">
+            <div class="strike-avatar" aria-hidden="true">D</div>
+            <div class="strike-meta">
+              <div class="strike-name">Drakson</div>
+              <div class="strike-note"> …</div>
+            </div>
+          </div>
+          <div class="strike-right">
+            <span class="strike-badge" data-level="2">2</span>
+          </div>
+        </div>
+
+        <div class="strike-row" data-name="Larond" data-strikes="14">
+          <div class="strike-user">
+            <div class="strike-avatar" aria-hidden="true">L</div>
+            <div class="strike-meta">
+              <div class="strike-name">Larond</div>
+              <div class="strike-note"> …</div>
+            </div>
+          </div>
+          <div class="strike-right">
+            <span class="strike-badge" data-level="14">14</span>
+          </div>
+        </div>
+
+
+
+        <div class="strike-row" data-name="Pierd0la" data-strikes="2">
+          <div class="strike-user">
+            <div class="strike-avatar" aria-hidden="true">P</div>
+            <div class="strike-meta">
+              <div class="strike-name">Pierd0la</div>
+              <div class="strike-note"> …</div>
+            </div>
+          </div>
+          <div class="strike-right">
+            <span class="strike-badge" data-level="2">2</span>
+          </div>
+        </div>
+
+
+        <div class="strike-row" data-name="Wapniak" data-strikes="15">
+          <div class="strike-user">
+            <div class="strike-avatar" aria-hidden="true">W</div>
+            <div class="strike-meta">
+              <div class="strike-name">Wapniak</div>
+              <div class="strike-note"> …</div>
+            </div>
+          </div>
+          <div class="strike-right">
+            <span class="strike-badge" data-level="15">15</span>
+          </div>
+        </div>
+
+        <div class="strike-row" data-name="Ravenous" data-strikes="20">
+          <div class="strike-user">
+            <div class="strike-avatar" aria-hidden="true">R</div>
+            <div class="strike-meta">
+              <div class="strike-name">Ravenous</div>
+              <div class="strike-note"> …</div>
+            </div>
+          </div>
+          <div class="strike-right">
+            <span class="strike-badge" data-level="20">20</span>
+          </div>
+        </div>
+
+
+        <div class="strike-row" data-name="Sebolose" data-strikes="2">
+          <div class="strike-user">
+            <div class="strike-avatar" aria-hidden="true">S</div>
+            <div class="strike-meta">
+              <div class="strike-name">Sebolose</div>
+              <div class="strike-note"> …</div>
+            </div>
+          </div>
+          <div class="strike-right">
+            <span class="strike-badge" data-level="2">2</span>
+          </div>
+        </div>
+
+                <div class="strike-row" data-name="Kaffitka" data-strikes="2">
+          <div class="strike-user">
+            <div class="strike-avatar" aria-hidden="true">K</div>
+            <div class="strike-meta">
+              <div class="strike-name">Kaffitka</div>
+              <div class="strike-note"> …</div>
+            </div>
+          </div>
+          <div class="strike-right">
+            <span class="strike-badge" data-level="2">2</span>
+          </div>
+        </div>
+
+
+                <div class="strike-row" data-name="Klaq92" data-strikes="20">
+          <div class="strike-user">
+            <div class="strike-avatar" aria-hidden="true">K</div>
+            <div class="strike-meta">
+              <div class="strike-name">Klaq92</div>
+              <div class="strike-note"> …</div>
+            </div>
+          </div>
+          <div class="strike-right">
+            <span class="strike-badge" data-level="20">20</span>
+          </div>
+        </div>
+
+
+                <div class="strike-row" data-name="Klaq92" data-strikes="7">
+          <div class="strike-user">
+            <div class="strike-avatar" aria-hidden="true">K</div>
+            <div class="strike-meta">
+              <div class="strike-name">Game_Olka</div>
+              <div class="strike-note"> …</div>
+            </div>
+          </div>
+          <div class="strike-right">
+            <span class="strike-badge" data-level="7">7</span>
+          </div>
+        </div>
+
+      <div class="footer">
+        <div>© <span id="year"></span> • TaboLore</div>
+
+      </div>
+    </article>
+  </div>
+
+  <script>
+    const now = new Date();
+    document.getElementById('year').textContent = now.getFullYear();
+    const fmt = new Intl.DateTimeFormat('pl-PL', { year:'numeric', month:'long', day:'2-digit' });
+    document.getElementById('updated').textContent = fmt.format(now);
+
+    const list = document.getElementById('list');
+    const rows = () => Array.from(list.querySelectorAll('.strike-row'));
+    const q = document.getElementById('q');
+    const sort = document.getElementById('sort');
+    const summary = document.getElementById('summary');
+
+    function applyBadgeLevel(row){
+      const n = Number(row.dataset.strikes || 0);
+      const badge = row.querySelector('.strike-badge');
+      if (!badge) return;
+      badge.textContent = String(n);
+      badge.setAttribute('data-level', String(n));
+    }
+
+    function refreshSummary(){
+      const visible = rows().filter(r => r.style.display !== 'none');
+      const total = visible.length;
+      const sum = visible.reduce((acc, r) => acc + Number(r.dataset.strikes || 0), 0);
+      summary.textContent = `Widocznych: ${total} • Suma strików: ${sum}`;
+    }
+
+    function filter(){
+      const needle = (q.value || '').trim().toLowerCase();
+      rows().forEach(r => {
+        const name = (r.dataset.name || '').toLowerCase();
+        r.style.display = (!needle || name.includes(needle)) ? '' : 'none';
+      });
+      refreshSummary();
+    }
+
+    function doSort(){
+      const mode = sort.value;
+      const arr = rows();
+
+      arr.sort((a,b) => {
+        const an = (a.dataset.name || '').toLowerCase();
+        const bn = (b.dataset.name || '').toLowerCase();
+        const as = Number(a.dataset.strikes || 0);
+        const bs = Number(b.dataset.strikes || 0);
+
+        if (mode === 'strikes-desc') return bs - as || an.localeCompare(bn);
+        if (mode === 'strikes-asc')  return as - bs || an.localeCompare(bn);
+        if (mode === 'name-desc')    return bn.localeCompare(an);
+        return an.localeCompare(bn); // name-asc
+      });
+
+      arr.forEach(el => list.appendChild(el));
+      refreshSummary();
+    }
+
+    // init
+    rows().forEach(applyBadgeLevel);
+    refreshSummary();
+
+    q.addEventListener('input', filter);
+    sort.addEventListener('change', doSort);
+  </script>
+
+</body>
+</html>

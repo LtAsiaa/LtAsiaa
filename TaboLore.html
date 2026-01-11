@@ -6,29 +6,26 @@
   <title>TaboLore</title>
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/wiki.css">
-
 </head>
+
 <body>
 
   <!-- GÓRNA BELKA (jak wiki) -->
   <div class="topbar">
     <div class="topbar-inner">
-      <a class="brand" href="#">
+      <a class="brand" href="index.html">
         <div class="logo" aria-hidden="true"></div>
         <div>
           <strong>TaboLore</strong>
-          <span>Twoja mini-encyklopedia</span>
         </div>
       </a>
 
       <div class="search" aria-label="Szukaj">
-        <input type="search" placeholder="Szukaj w lore… (opcjonalnie)" />
+        <input type="search" placeholder="Szukaj w lore…" />
       </div>
 
       <div class="toplinks">
-        <a class="pill" href="#"><span class="dot"></span> Strona główna</a>
-        <a class="pill" href="#"><span class="dot"></span> Bohaterowie</a>
-        <a class="pill" href="#"><span class="dot"></span> Lokacje</a>
+        <a class="pill" href="index.html"><span class="dot"></span> Strona główna</a>
       </div>
     </div>
   </div>
@@ -37,44 +34,34 @@
     <div class="grid">
 
       <!-- LEWY PANEL (nawigacja) -->
-      <aside>
+      <aside class="wiki-side">
         <div class="side-head">
           <p class="side-title">Nawigacja</p>
-          <p class="side-sub">Skróty do ważnych stron</p>
+          <p class="side-sub">Skróty do ważnych sekcji</p>
         </div>
 
         <div class="side-section">
           <p class="side-label">Kategorie</p>
           <ul class="navlist">
-            <li><a href="#streszczenie">Streszczenie</a></li>
-            <li><a href="#tlo">Tło świata</a></li>
-            <li><a href="#postacie">Postacie</a></li>
-            <li><a href="#wydarzenia">Wydarzenia</a></li>
-            <li><a href="#chronologia">Chronologia</a></li>
-            <li><a href="#ciekawostki">Ciekawostki</a></li>
-            <li><a href="#zrodla">Źródła</a></li>
+            <li><a href="#streszczenie">Wstęp</a></li>
+            <li><a href="#zasady">Główne zasady</a></li>
+            <li><a href="#hierarchia">Hierarchia widzów</a></li>
+            <li><a href="#faq">Pytania retoryczne</a></li>
           </ul>
         </div>
 
-        <div class="side-section">
-          <p class="side-label">Szybkie linki</p>
-          <ul class="navlist">
-            <li><a href="#">Mapa świata (link)</a></li>
-            <li><a href="#">Słownik pojęć (link)</a></li>
-            <li><a href="#">FAQ (link)</a></li>
-          </ul>
-        </div>
+        
       </aside>
 
       <!-- ARTYKUŁ (centrum) -->
-      <article>
+      <article class="wiki-article">
         <div class="hero">
           <small>Artykuł • aktualizacja: <span id="updated">—</span></small>
-          <h1>Tytuł Lore / Hasło Wiki</h1>
+          <h1>TaboLore</h1>
           <div class="meta">
-            <span class="badge"><span class="dot"></span> gatunek: cyber/noir</span>
+            <span class="badge"><span class="dot"></span> klimat: hard/iron/żart</span>
             <span class="badge"><span class="dot"></span> status: kanon</span>
-            <span class="badge"><span class="dot"></span> poziom spoilerów: niski</span>
+            <span class="badge"><span class="dot"></span> spoiler: umiarkowany</span>
           </div>
         </div>
 
@@ -82,72 +69,75 @@
           <!-- LEWA KOLUMNA: tekst -->
           <div class="prose">
 
-            <div class="toc" aria-label="Spis treści">
-              <div class="toc-title">
-                <strong>Spis treści</strong>
-                <small>kliknij, aby przejść</small>
-              </div>
-              <ol>
-                <li><a href="#streszczenie">Streszczenie</a></li>
-                <li><a href="#tlo">Tło świata</a></li>
-                <li><a href="#postacie">Postacie</a></li>
-                <li><a href="#wydarzenia">Wydarzenia</a></li>
-                <li><a href="#chronologia">Chronologia</a></li>
-                <li><a href="#ciekawostki">Ciekawostki</a></li>
-                <li><a href="#zrodla">Źródła</a></li>
-              </ol>
-            </div>
+            
 
-            <h2 id="streszczenie">Streszczenie</h2>
+            <h2 id="streszczenie">Wstęp</h2>
             <p>
-              W tym miejscu wstawiasz krótki opis lore (3–6 zdań). Możesz wpleść wyróżnione pojęcia typu
-              <code>Frakcja</code>, <code>Artefakt</code> albo <code>Wydarzenie</code>.
+              <b>TaboLore</b> to zbiór zasad, żartów, tradycji i „kanonu” streamów Tabo. Widzowie przechodzą przez
+              własną ścieżkę wtajemniczenia (od sezonowca po weterana/hejtera), a ważne momenty trafiają do
+              <b>TaboLOGu</b>.
             </p>
 
-            <h2 id="tlo">Tło świata</h2>
-            <p>
-              Opisz reguły świata, klimat, technologię/magię, ważne konflikty. Dobrze działa podział na akapity.
-            </p>
+            <h2 id="zasady">Główne zasady TaboLore</h2>
             <ul>
-              <li><b>Motyw przewodni:</b> …</li>
-              <li><b>Zasady:</b> …</li>
-              <li><b>Ograniczenia:</b> …</li>
+              <li>Każdy nowy widz staje się sezonowcem i jest poddawany próbie. Po pozytywnym przebyciu szkoły przetrwania, widz staje się twardym taboretem. Z czasem może stać się weteranem lub hejterem.</li>
+
+              <li>Każdą grę przechodzimy na <b>Hardzie</b>.</li>
+              <li>Na <span class="caution-inline"><img src="image/Caution.gif" alt="Caution"></span> się nie leczymy.</li>
+
+              <li>Nie biegamy z <span class="caution-inline"><img src="image/InkRibbon.png" alt="InkRibbon"></span>jak Pestarz.</li>
+              <li>TaboLore wymaga zebrania <b>wszystkich proszków (gun powder)</b>.</li>
+              <li>W każdym <b>RE</b> jest <b>respawn przeciwników</b>.</li>
+
+              <li>Strimy Tabo, jak i jego widzowie, <b>nie istnieją</b>.</li>
+              <li>Tabo jest <b>proplayerem</b>.</li>
+              <li>Główne atrybuty proplayera: <b>podkoszulka „żonobijka”</b>, <b>proplayerskie rękawiczki</b>, <b>ćwicznik palców</b> i <b>niebieskie słuchawki</b>.</li>
+
+              <li><b>LtAsiaa</b> jest najlepszym moderatorem na całym twitchu. Jest <b>KZM</b> i odpowiada za „normalne” funkcjonowanie strimów.</li>
+              <li>Punkt <b>20:30</b> — <b>baczność</b> do <b>Tabo Hymnu</b>.</li>
+              <li>Wszystkie ważne wydarzenia podczas strima są odnotowywane w <b>TaboLOGu</b>.</li>
+              <li>Do weryfikacji na Tabowym discordzie należy pokazać swoje gry na płytach wraz z książeczkami.</li>
+
+              <li>Gramy dla <b>fabułki</b>, a nie dla obrazeczków (platyn) czy speedrunów… <i>Nie no żart, moderatorka jest jednym z naczelnych platyniarzy zespołu taboretów, Taboret Samplarz jest speedrunerem residentów - kochamy i szanujemy wszystkich (nawet sezonowców)</i>.</li>
+              <li>Każdy stream przyjmuje pewną formę żartu — przychodząc tu musisz mieć <b>ogromny dystans</b>.</li>
+              <li>Dokuczanie sobie jest <b>tolerowane</b>: przesada = <b>T/O</b>, potem <b>Ban</b>. Moderacja ma pełną decyzyjność.</li>
+              <li>Taboretowe hasło: <b>WSZYSCY DO BANA</b>.</li>
+              <li>Orzechowy mieszka w <b>Skandynawii</b>.</li>
+              <li>O wyjście z sezonowców można starać się wyjść po przynajmniej 3 strimach.</li>
+              <li>Sezonowcy nie mogą wykupywać przeszkadzajek!</li>
+              <li>W Tabologii niepoprawnym jest celowe dawanie i odbieranie follow tylko po to, aby zdobyć punkty.</li>
+              <li>Haminir to Stefan</li>
+              <li>Pierd0la jest na kadym finale gry!</li>
+              <li>Po 00 następuje wyłączenie wszystkich przeszkadzajek - niech strimer w końcu kurwa pogra!</li>
             </ul>
 
-            <h2 id="postacie">Postacie</h2>
-            <p>
-              Lista postaci i krótkie opisy. Możesz linkować do innych haseł: <a href="#">Imię Postaci</a>.
-            </p>
+            <h2 id="hierarchia">Hierarchia widzów</h2>
             <ul>
-              <li><b>Postać A</b> — rola, cel, relacje.</li>
-              <li><b>Postać B</b> — rola, cel, sekret.</li>
-              <li><b>Postać C</b> — wątek poboczny, konflikt.</li>
+              <li><b>Sezonowiec</b> — nowy widz nie znający Lore.</li>
+              <li><b>Twardy taboret</b> — widz po szkole przetrwania, znający Lore w stopniu wystarczającym.</li>
+              <li><b>Weteran</b> — twardo stojący taboret, zna zasady i lore.</li>
+              <li><b>Hejter</b> — wredny taboret.</li>
             </ul>
 
-            <h2 id="wydarzenia">Wydarzenia</h2>
-            <p>
-              Najważniejsze wydarzenia w lore. Jeśli masz podział na „arki” / „sezony”, tu jest idealne miejsce.
-            </p>
-
-            <h2 id="chronologia">Chronologia</h2>
-            <p>
-              Prosta oś czasu. Przykład:
-            </p>
+            <h2 id="moderacja">Zadania moderacji</h2>
             <ul>
-              <li><code>Rok 0</code> — „Wielki Reset”</li>
-              <li><code>Rok 3</code> — „Powstanie Syndykatu”</li>
-              <li><code>Rok 7</code> — „Incydent Neonowego Mostu”</li>
+              <li>Znać na wylot TaboLore.</li>
+              <li>Według Tabologii, moderatorzy są bezwzględnie wierni swojemu strimerowi. Każde zachowanie wskazujące na niesubordynację, będzie karane usunięciem ze stanowiska.</li>
+              <li>Moderacja ma za zadanie kazdorazowo po strimie robic sprawozdania z wydarzeń na strimie oraz sprawozdanie z czatu (wykrywanie hejterów i loverków).</li>
+              <li>Tylko KZM ma prawo opierdalac strimera!</li>
             </ul>
 
-            <h2 id="ciekawostki">Ciekawostki</h2>
-            <p>
-              Smaczki i detale: ukryte znaczenia, inspiracje, easter eggi.
-            </p>
 
-            <h2 id="zrodla">Źródła</h2>
-            <p>
-              Tu wstaw źródła/odcinki/rozmowy/serwery — np. 1) odcinek #12, 2) wpis z dnia …, 3) notatki.
-            </p>
+            <h2 id="faq">Pytania retoryczne</h2>
+            <ul>
+              <li><b>Czy Tabo jest proplayerem?</b> — Oczywiście, że tak.</li>
+              <li><b>Kiedy są strimy?</b> — Z założenia codziennie koło 20, praktycznie wtedy kiedy jest czas i ochota (powiadomienia na <a href="https://discord.gg/EYG3SEPamn">DC</a>).</li>
+              <li><b>Jak zwierzaczki Tabo się wabią?</b> — kot: Migi, pies: Pucia/Pułapka (ma 3,5 łapki).</li>
+              <li><b>Gdzie Tabo pracuję?</b> — Jest bibliotekarzem.</li>
+              <li><b>Jak Tabo ma na imię?</b> — Imię: Tabo, Nazwisko: Retro.</li>
+              <li><b>Co zazwyczaj Tabo popija podczas strima?</b> - Łzy platyniarzy!</li>
+              <li><b>Ile Tabo strimuje?</b> - Od około marca 2025</li>
+            </ul>
           </div>
 
           <!-- PRAWA KOLUMNA: infobox (jak na wiki) -->
@@ -155,31 +145,28 @@
             <div class="ibox-head">
               <h3>Infobox</h3>
             </div>
+
             <div class="ibox-media">
-              Miejsce na grafikę / herb / symbol<br>
-              (podmień na <b>&lt;img&gt;</b>)
+              <img src="image/TaboRetro.png" alt="Herb TaboLore">
             </div>
+
             <div class="ibox-body">
-              <div class="kv">
-                <div class="k">Nazwa</div><div class="v">…</div>
-                <div class="k">Typ</div><div class="v">hasło / frakcja</div>
-                <div class="k">Status</div><div class="v">kanon</div>
-                <div class="k">Region</div><div class="v">…</div>
-                <div class="k">Era</div><div class="v">…</div>
-                <div class="k">Powiązania</div><div class="v">…</div>
-              </div>
-              <div class="sep"></div>
               <div class="ibox-links">
-                <a class="pill" href="#"><span class="dot"></span> Powiązane hasło</a>
-                <a class="pill" href="#"><span class="dot"></span> Mapa</a>
+                <a class="pill" href="TaboLog.html"><span class="dot"></span> TaboLog</a>
+                <a class="pill" href="Strike.html"><span class="dot"></span> Licznik Strików</a>
+                <a class="pill" href="TaboPlatyna.html"><span class="dot"></span> Platynka</a>
+                <a class="pill" href="Cytaty.html"><span class="dot"></span> Cytaty ze strimów</a>
+                <a class="pill" href="Klipy.html"><span class="dot"></span> Najlepsze klipy</a>
+                <a class="pill" href="RetroMGierki.html"><span class="dot"></span> Retro Mini Gierki</a>                
               </div>
             </div>
           </aside>
+
         </div>
 
         <div class="footer">
-          <div>© <span id="year"></span> • Lore Wiki</div>
-          <div>Kategorie: <span style="color:var(--neon)">Lore</span> • <span style="color:var(--neon)">Świat</span> • <span style="color:var(--neon)">Postacie</span></div>
+          <div>© <span id="year"></span> • TaboLore</div>
+          <div>Kategorie: <span style="color:var(--neon)">Lore</span> • <span style="color:var(--neon)">Zasady</span> • <span style="color:var(--neon)">TaboLOG</span></div>
         </div>
       </article>
 
@@ -189,10 +176,9 @@
   <script>
     const now = new Date();
     document.getElementById('year').textContent = now.getFullYear();
-
-    // Przyjazny format daty aktualizacji (PL)
     const fmt = new Intl.DateTimeFormat('pl-PL', { year:'numeric', month:'long', day:'2-digit' });
     document.getElementById('updated').textContent = fmt.format(now);
   </script>
+
 </body>
 </html>

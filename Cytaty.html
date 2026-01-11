@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tytuł strony</title>
+
+  <!-- Wspólne style -->
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/wiki.css">
+</head>
+
+<body>
+
+  <!-- GÓRNA BELKA -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">
+        <div class="logo"></div>
+        <div>
+          <strong>TaboLore</strong>
+          <span>Cytaty</span>
+        </div>
+      </a>
+
+      <div class="toplinks">
+        <a class="pill" href="TaboLore.html"><span class="dot"></span> Powraca do Lore</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TREŚĆ -->
+  <div class="wrap">
+    <article class="wiki-article">
+      <div class="hero">
+        <h1>Cytaty ze strimów</h1>
+        
+      </div>
+
+      <div class="content">
+        <div class="prose">
+            <details class="log">
+              <summary><span class="log-date">2026</span> </summary>
+              <div class="log-body">
+                <ul>
+                  <li><b></b> </li>
+               
+              </div>
+            </details>
+
+            <details class="log">
+              <summary><span class="log-date">2025</span> </summary>
+              <div class="log-body">
+                <ul>
+                  <li>"Super mordki u Tabusia, ciepła czeka herbatusia" - <b>Krisuroku</b></li>
+                  <li>"Tipply i PayPale, wtedy jest doskonale" - <b>Krisuroku</b></li>
+                  <li>"To jest kanał Tabo, jednak nie zadziała" - <b>Wapniak</b></li>
+                  <li>"Pistolet działa na naboje do pistoletu" - <b>Tabo</b> </li>
+                  <li>"Znowu będzie stał w miejsu i pierdolił głupoty przez pół godziny" - <b>Alpsex</b> </li>
+                  
+
+                </ul>
+              </div>
+            </details>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div>© <span id="year"></span> • TaboLore</div>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
