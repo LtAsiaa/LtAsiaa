@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Urząd Do Spraw Fabuły — Strona główna</title>
+  <style>
+    :root{
+      --bg: #f6f2e9;         /* papier */
+      --paper: #fbf8f1;
+      --ink: #171717;        /* tusz */
+      --muted: #5a5a5a;
+      --line: rgba(0,0,0,.12);
+      --stamp: #b52828;      /* pieczątka */
+      --accent: #1b5e7a;     /* urzędowy akcent */
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --max: 1120px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 700px at 20% 0%, rgba(0,0,0,.06), transparent 55%),
+        radial-gradient(900px 500px at 90% 20%, rgba(27,94,122,.09), transparent 60%),
+        var(--bg);
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; text-underline-offset: 3px; }
+
+    .container{ width:min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+
+    /* Top bar */
+    .topbar{
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--bg) 75%, transparent);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 14px 0;
+      gap: 18px;
+    }
+    .brand{
+      display:flex; align-items:center; gap: 12px;
+      min-width: 240px;
+    }
+    .seal{
+      width: 42px; height: 42px; border-radius: 999px;
+      border: 2px solid var(--stamp);
+      display:grid; place-items:center;
+      color: var(--stamp);
+      transform: rotate(-8deg);
+      letter-spacing: .08em;
+      font-weight: 800;
+      background: color-mix(in srgb, var(--paper) 65%, transparent);
+      box-shadow: 0 6px 14px rgba(181,40,40,.10);
+      user-select: none;
+    }
+    .brand h1{
+      margin:0; font-size: 16px; line-height: 1.1;
+      letter-spacing: .02em;
+    }
+    .brand small{ display:block; color: var(--muted); font-weight: 600; letter-spacing: .02em; }
+
+    nav{
+      display:flex; gap: 14px; flex-wrap:wrap;
+      align-items:center; justify-content:center;
+    }
+    .navlink{
+      padding: 8px 10px; border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--muted);
+      font-weight: 650;
+    }
+    .navlink:hover{
+      border-color: var(--line);
+      background: color-mix(in srgb, var(--paper) 65%, transparent);
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .actions{ display:flex; gap: 10px; align-items:center; justify-content:flex-end; min-width: 240px; }
+    .search{
+      display:flex; align-items:center; gap: 8px;
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--paper) 80%, transparent);
+      box-shadow: 0 1px 0 rgba(0,0,0,.03) inset;
+      min-width: 220px;
+    }
+    .search input{
+      width: 100%;
+      border: none; outline: none; background: transparent;
+      color: var(--ink);
+    }
+    .btn{
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 75%, transparent);
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-weight: 750;
+      cursor:pointer;
+      box-shadow: 0 1px 0 rgba(0,0,0,.03) inset;
+    }
+    .btn.primary{
+      border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
+      background: color-mix(in srgb, var(--accent) 12%, var(--paper));
+      color: color-mix(in srgb, var(--accent) 75%, black);
+    }
+
+    /* Page layout */
+    main{ padding: 26px 0 60px; }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 18px;
+      align-items: stretch;
+      margin-top: 10px;
+    }
+
+    .card{
+      background: linear-gradient(180deg, var(--paper), color-mix(in srgb, var(--paper) 80%, var(--bg)));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:before{
+      content:"";
+      position:absolute; inset: -40px -30px auto auto;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle at 30% 30%, rgba(181,40,40,.18), transparent 60%);
+      transform: rotate(10deg);
+      pointer-events:none;
+    }
+
+    .hero h2{ margin: 0 0 10px; font-size: 34px; line-height: 1.1; letter-spacing: -0.02em; }
+    .hero p{ margin: 0 0 14px; color: var(--muted); font-weight: 600; }
+    .hero .meta{
+      display:flex; flex-wrap:wrap; gap: 10px;
+      align-items:center;
+    }
+
+    .pill{
+      display:inline-flex; align-items:center; gap: 8px;
+      padding: 8px 10px; border-radius: 999px;
+      border: 1px dashed color-mix(in srgb, var(--ink) 18%, transparent);
+      background: color-mix(in srgb, var(--paper) 70%, transparent);
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: .01em;
+    }
+
+    .stamp{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding: 9px 12px;
+      border: 2px solid var(--stamp);
+      color: var(--stamp);
+      border-radius: 12px;
+      font-weight: 900;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      transform: rotate(-3deg);
+      background: color-mix(in srgb, var(--paper) 70%, transparent);
+      box-shadow: 0 10px 20px rgba(181,40,40,.12);
+      user-select:none;
+    }
+
+    .hero-right{
+      display:grid;
+      gap: 12px;
+    }
+    .mini{
+      display:flex; flex-direction:column; gap: 8px;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 85%, transparent);
+      box-shadow: 0 6px 18px rgba(0,0,0,.05);
+    }
+    .mini strong{ font-size: 13px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
+    .mini a{ font-weight: 850; font-size: 16px; }
+    .mini .sub{ color: var(--muted); font-weight: 600; font-size: 13px; }
+
+    /* Content grid */
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr .38fr;
+      gap: 18px;
+      margin-top: 18px;
+      align-items:start;
+    }
+
+    .section-title{
+      display:flex; align-items:baseline; justify-content:space-between;
+      gap: 12px;
+      margin: 2px 0 10px;
+    }
+    .section-title h3{
+      margin:0;
+      font-size: 18px;
+      letter-spacing: .02em;
+    }
+    .section-title a{
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .list{ display:grid; gap: 12px; }
+    .entry{
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      padding: 14px;
+      display:grid;
+      gap: 10px;
+    }
+    .entry-top{
+      display:flex; align-items:center; justify-content:space-between; gap: 12px;
+      flex-wrap:wrap;
+    }
+    .tags{ display:flex; gap: 8px; flex-wrap:wrap; }
+    .tag{
+      font-size: 12px;
+      padding: 6px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 80%, transparent);
+      color: var(--muted);
+      font-weight: 700;
+    }
+    .verdict{
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid color-mix(in srgb, var(--stamp) 35%, var(--line));
+      color: color-mix(in srgb, var(--stamp) 80%, black);
+      background: color-mix(in srgb, var(--stamp) 8%, var(--paper));
+      font-weight: 900;
+      letter-spacing: .04em;
+    }
+    .entry h4{ margin:0; font-size: 18px; letter-spacing: -0.01em; }
+    .entry p{ margin:0; color: var(--muted); font-weight: 600; }
+    .entry .cta{
+      display:flex; gap: 10px; flex-wrap:wrap; align-items:center;
+      margin-top: 2px;
+    }
+    .link{
+      font-weight: 850;
+      color: color-mix(in srgb, var(--accent) 75%, black);
+    }
+    .muted{ color: var(--muted); font-weight: 650; font-size: 13px; }
+
+    /* Sidebar */
+    .aside .card{ padding: 16px; }
+    .aside h3{ margin:0 0 10px; font-size: 16px; }
+    .checklist{ margin: 0; padding-left: 18px; color: var(--muted); font-weight: 650; }
+    .checklist li{ margin: 8px 0; }
+    .badge{
+      display:inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 80%, transparent);
+      font-weight: 800;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .03em;
+    }
+
+    /* Footer */
+    footer{
+      margin-top: 26px;
+      border-top: 1px solid var(--line);
+      padding: 22px 0 30px;
+      color: var(--muted);
+    }
+    .footergrid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items:start;
+    }
+    .footergrid p{ margin: 8px 0 0; }
+    .kiosk{
+      border: 1px dashed var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      background: color-mix(in srgb, var(--paper) 70%, transparent);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero{ grid-template-columns: 1fr; }
+      .actions{ min-width: auto; }
+      .search{ min-width: 160px; }
+      .grid{ grid-template-columns: 1fr; }
+      .footergrid{ grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px){
+      .topbar-inner{ flex-wrap:wrap; }
+      .brand{ min-width:auto; }
+      nav{ justify-content:flex-start; }
+      .actions{ width:100%; justify-content:space-between; }
+      .search{ flex: 1; }
+      .hero h2{ font-size: 28px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#">
+        <div class="seal">UDSF</div>
+        <div>
+          <h1>Urząd Do Spraw Fabuły</h1>
+          <small>Oficjalnie nieoficjalne decyzje popkultury</small>
+        </div>
+      </a>
+
+      <nav aria-label="Główna nawigacja">
+        <a class="navlink" href="#">Decyzje</a>
+        <a class="navlink" href="#">Akta</a>
+        <a class="navlink" href="#">Instrukcje</a>
+        <a class="navlink" href="#">Posiedzenia</a>
+        <a class="navlink" href="#">Wydział Retro</a>
+        <a class="navlink" href="#">O Urzędzie</a>
+      </nav>
+
+      <div class="actions">
+        <label class="search" aria-label="Szukaj">
+          <span aria-hidden="true">🔎</span>
+          <input placeholder="Szukaj po tytule / tagu / sygnaturze…" />
+        </label>
+        <button class="btn primary">Złóż wniosek</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero" aria-label="Wyróżnienie">
+      <article class="card">
+        <div class="stamp">ROZPATRZONO</div>
+        <h2>W sprawie fabuły: rozpatrzone.</h2>
+        <p>Recenzje filmów, gier i książek w formie decyzji urzędowych. Merytorycznie, z lekką nutą sarkazmu.</p>
+
+        <div class="meta">
+          <span class="pill">🪑 Taboretro: retro kontrola</span>
+          <span class="pill">🔨 Młotkowa: ogar chaosu</span>
+          <span class="pill">🗂️ Akta: analizy i lore</span>
+        </div>
+
+        <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn primary">Czytaj najnowszą decyzję</button>
+          <button class="btn">Przeglądaj decyzje</button>
+        </div>
+      </article>
+
+      <aside class="hero-right" aria-label="Szybkie skróty">
+        <div class="mini">
+          <strong>Nowa decyzja</strong>
+          <a href="#">UDSF/GRY/2026/001 — „Tytuł Roboczy”</a>
+          <div class="sub">Werdykt: <span class="verdict">WARUNKOWO</span> • 6 min czytania</div>
+        </div>
+        <div class="mini">
+          <strong>W toku</strong>
+          <div class="sub">Na biurku: 3 sprawy • Najbliższe posiedzenie: piątek</div>
+          <a class="link" href="#">Zobacz listę „Na biurku” →</a>
+        </div>
+        <div class="mini">
+          <strong>Najczęściej cytowane</strong>
+          <a href="#">„Dlaczego fabuła nie dowozi” (Akta Specjalne)</a>
+          <div class="sub">Top 7 dni • komentarze: 42</div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- CONTENT -->
+    <section class="grid" aria-label="Zawartość">
+      <div>
+        <!-- Ostatnie decyzje -->
+        <div class="section-title">
+          <h3>Ostatnie decyzje</h3>
+          <a href="#">Wszystkie decyzje →</a>
+        </div>
+
+        <div class="list">
+          <article class="entry">
+            <div class="entry-top">
+              <div class="tags">
+                <span class="tag">🎮 Gra</span>
+                <span class="tag">RPG</span>
+                <span class="tag">Sygn. UDSF/GRY/2026/001</span>
+              </div>
+              <span class="verdict">ZATWIERDZONO</span>
+            </div>
+            <h4>„Tytuł Roboczy”: kiedy mechanika mówi „tak”, a fabuła „zobaczymy”</h4>
+            <p>Krótka teza recenzji w 1–2 zdaniach. Co działa, co nie działa, i dlaczego Młotkowa marszczy brwi.</p>
+            <div class="cta">
+              <a class="link" href="#">Czytaj decyzję →</a>
+              <span class="muted">Autorzy: Taboretro, Pani Młotkowa • 6 min</span>
+            </div>
+          </article>
+
+          <article class="entry">
+            <div class="entry-top">
+              <div class="tags">
+                <span class="tag">🎬 Film</span>
+                <span class="tag">Thriller</span>
+                <span class="tag">Sygn. UDSF/FILM/2026/004</span>
+              </div>
+              <span class="verdict">DO POPRAWKI</span>
+            </div>
+            <h4>„Seans”: świetny klimat, gorsza logika (wnioski końcowe w załączniku)</h4>
+            <p>To miejsce na ten sarkastyczny, ale celny opis: „wygląda jak pro, działa jak beta”.</p>
+            <div class="cta">
+              <a class="link" href="#">Czytaj decyzję →</a>
+              <span class="muted">5 min • komentarze: 12</span>
+            </div>
+          </article>
+
+          <article class="entry">
+            <div class="entry-top">
+              <div class="tags">
+                <span class="tag">📚 Książka</span>
+                <span class="tag">SF</span>
+                <span class="tag">Sygn. UDSF/KS/2026/002</span>
+              </div>
+              <span class="verdict">WARUNKOWO</span>
+            </div>
+            <h4>„Rozdział 9”: genialny pomysł, średnie tempo — ale warto</h4>
+            <p>Opis w stylu urzędowym: „stan faktyczny”, „uzasadnienie”, „dowody w sprawie”.</p>
+            <div class="cta">
+              <a class="link" href="#">Czytaj decyzję →</a>
+              <span class="muted">7 min • tag: #lore</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Akta specjalne -->
+        <div style="height:14px;"></div>
+        <div class="section-title">
+          <h3>Akta specjalne</h3>
+          <a href="#">Wszystkie akta →</a>
+        </div>
+
+        <div class="list">
+          <article class="entry">
+            <div class="entry-top">
+              <div class="tags">
+                <span class="tag">🗂️ Akta</span>
+                <span class="tag">Analiza</span>
+                <span class="tag">Seria: „Mechanika vs. Fabuła”</span>
+              </div>
+              <span class="badge">DO CYTOWANIA</span>
+            </div>
+            <h4>Dlaczego „dobre tempo” to nie to samo co „dużo akcji”</h4>
+            <p>Tekst-esej pod dyskusje i linkowanie. Idealny na fundament „urzędowego” tonu.</p>
+            <div class="cta">
+              <a class="link" href="#">Otwórz akta →</a>
+              <span class="muted">10–12 min • komentarze: 38</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Instrukcje -->
+        <div style="height:14px;"></div>
+        <div class="section-title">
+          <h3>Instrukcje i poradniki</h3>
+          <a href="#">Wszystkie instrukcje →</a>
+        </div>
+
+        <div class="list">
+          <article class="entry">
+            <div class="entry-top">
+              <div class="tags">
+                <span class="tag">🧾 Instrukcja</span>
+                <span class="tag">Start</span>
+                <span class="tag">Petent</span>
+              </div>
+              <span class="badge">CHECKLISTA</span>
+            </div>
+            <h4>Jak zacząć z retro bez wpadania w „kup wszystko”</h4>
+            <p>Checklisty, progi wejścia, sensowne rekomendacje — Młotkowa podpisuje.</p>
+            <div class="cta">
+              <a class="link" href="#">Czytaj instrukcję →</a>
+              <span class="muted">8 min</span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- ASIDE -->
+      <aside class="aside" aria-label="Boczny panel">
+        <div class="card">
+          <h3>Okienko Młotkowej 🔨</h3>
+          <div class="muted" style="margin-bottom:10px;">Tydzień: „kontrolujemy chaos, zanim on skontroluje nas”</div>
+          <ul class="checklist">
+            <li>Sprawa #1: tytuł „na biurku” + deadline</li>
+            <li>Sprawa #2: posiedzenie (ankieta / dyskusja)</li>
+            <li>Sprawa #3: retro-kontrola Taboretro</li>
+          </ul>
+          <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn">Zobacz „Na biurku”</button>
+            <button class="btn primary">Dołącz do posiedzenia</button>
+          </div>
+        </div>
+
+        <div style="height:12px;"></div>
+
+        <div class="card">
+          <h3>Wydział Retro 🪑</h3>
+          <p class="muted" style="margin:0 0 10px;">
+            Klasyki, historia gatunków, porównania „kiedyś vs dziś”.
+          </p>
+          <div class="list">
+            <div class="mini">
+              <strong>Nowe w retro</strong>
+              <a href="#">„Archeologia Pikseli”: wpis #12</a>
+              <div class="sub">Taboretro • 4 min</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      <div class="footergrid">
+        <div>
+          <strong>Urząd Do Spraw Fabuły</strong>
+          <p>
+            Adres korespondencyjny: „gdzieś między kadrem a pikselem”.<br/>
+            Godziny przyjęć petentów: publikacje 2× tygodniowo (w teorii).
+          </p>
+          <p class="muted">© UDSF — pieczątka nie jest prawnie wiążąca.</p>
+        </div>
+        <div class="kiosk">
+          <strong>Biuletyn urzędowy</strong>
+          <p class="muted" style="margin:8px 0 10px;">1 mail tygodniowo: decyzje, akta i posiedzenia.</p>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <input
+              style="flex:1; min-width:180px; padding:10px 12px; border-radius:999px; border:1px solid var(--line); background: color-mix(in srgb, var(--paper) 85%, transparent); outline:none;"
+              placeholder="mail@przyklad.pl"
+            />
+            <button class="btn primary">Zapisz</button>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
